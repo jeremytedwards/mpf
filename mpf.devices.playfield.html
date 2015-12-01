@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.devices.playfield module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.devices.playfield module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.devices package" href="mpf.devices.html" />
     <link rel="next" title="mpf.devices.playfield_transfer module" href="mpf.devices.playfield_transfer.html" />
     <link rel="prev" title="mpf.devices.new_device_template module" href="mpf.devices.new_device_template.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.devices.new_device_template.html" title="mpf.devices.new_device_template module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" accesskey="U">mpf.devices package</a> &raquo;</li> 
       </ul>
@@ -65,7 +65,7 @@ a pinball machine.</p>
 <dd><p>Bases: <a class="reference internal" href="mpf.devices.ball_device.html#mpf.devices.ball_device.BallDevice" title="mpf.devices.ball_device.BallDevice"><tt class="xref py py-class docutils literal"><span class="pre">mpf.devices.ball_device.BallDevice</span></tt></a></p>
 <dl class="method">
 <dt id="mpf.devices.playfield.Playfield.add_ball">
-<tt class="descname">add_ball</tt><big>(</big><em>balls=1</em>, <em>source_name=None</em>, <em>source_device=None</em>, <em>trigger_event=None</em><big>)</big></dt>
+<tt class="descname">add_ball</tt><big>(</big><em>balls=1</em>, <em>source_name=None</em>, <em>source_device=None</em>, <em>player_controlled=False</em>, <em>reset=False</em><big>)</big></dt>
 <dd><p>Adds live ball(s) to the playfield.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -77,10 +77,10 @@ a pinball machine.</p>
 add the ball(s) from.</li>
 <li><strong>source_device</strong> &#8211; Optional ball device object you&#8217;d like to add the
 ball(s) from.</li>
-<li><strong>trigger_event</strong> &#8211; The optional name of an event that MPF will wait for
-before adding the ball into play. Typically used with player-
-controlled eject tag events. If None, the ball will be added
-immediately.</li>
+<li><strong>player_controlled</strong> &#8211; Boolean which specifies whether this event is
+player controlled. (See not below for details)</li>
+<li><strong>reset</strong> &#8211; Boolean which controls whether the source device should
+reset its state to idle</li>
 </ul>
 </td>
 </tr>
@@ -98,7 +98,7 @@ tagged with &#8216;ball_add_live&#8217;. If you don&#8217;t provide a source and
 have a device with the &#8216;ball_add_live&#8217; tag, MPF will quit.</p>
 <p>This method does <em>not</em> increase the game controller&#8217;s count of the
 number of balls in play. So if you want to add balls (like in a
-ball scenario(, you need to call this method along with
+multiball scenario), you need to call this method along with
 <tt class="docutils literal"><span class="pre">self.machine.game.add_balls_in_play()</span></tt>.)</p>
 <p>MPF tracks the number of balls in play separately from the actual balls
 on the playfield because there are numerous situations where the two
@@ -106,9 +106,37 @@ counts are not the same. For example, if a ball is in a VUK while some
 animation is playing, there are no balls on the playfield but still one
 ball in play, or if the player has a two-ball multiball and they shoot
 them both into locks, there are still two balls in play even though
-there are no balls on the playfield, or if the player tilts then there
-are still balls on the playfield but no balls in play.</p>
+there are no balls on the playfield. The opposite can also be true,
+like when the player tilts then there are still balls on the playfield
+but no balls in play.</p>
+<p>Explanation of the player_controlled parameter:</p>
+<p>Set player_controlled to True to indicate that MPF should wait for the
+player to eject the ball from the source_device rather than firing a
+coil. The logic works like this:</p>
+<p>If the source_device does not have an eject_coil defined, then it&#8217;s
+assumed that player_controlled is the only option. (e.g. this is a
+traditional plunger.) If the source_device does have an eject_coil
+defined, then there are two ways the eject could work. (1) there could
+be a &#8220;launch&#8221; button of some kind that&#8217;s used to fire the eject coil,
+or (2) the device could be the auto/manual combo style where there&#8217;s a
+mechanical plunger but also a coil which can eject the ball.</p>
+<p>If player_controlled is true and the device has an eject_coil, MPF will
+look for the player_controlled_eject_tag and eject the ball when a
+switch with that tag is activated.</p>
+<p>If there is no player_controlled_eject_tag, MPF assumes it&#8217;s a manual
+plunger and will wait for the ball to disappear from the device based
+on the device&#8217;s ball count decreasing.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.playfield.Playfield.add_incoming_ball">
+<tt class="descname">add_incoming_ball</tt><big>(</big><em>source</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.playfield.Playfield.add_missing_balls">
+<tt class="descname">add_missing_balls</tt><big>(</big><em>balls</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.playfield.Playfield.ball_found">
@@ -230,6 +258,16 @@ is the playfield device, this method always returns 999.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.devices.playfield.Playfield.is_playfield">
+<tt class="descname">is_playfield</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.playfield.Playfield.mark_playfield_active">
+<tt class="descname">mark_playfield_active</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.devices.playfield.Playfield.ok_to_confirm_ball_via_playfield_switch">
 <tt class="descname">ok_to_confirm_ball_via_playfield_switch</tt><big>(</big><big>)</big></dt>
 <dd><p>Used to check whether it&#8217;s ok for a ball device which ejects to the
@@ -244,60 +282,16 @@ playfield ball.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="mpf.devices.playfield.Playfield.player_eject_request">
-<tt class="descname">player_eject_request</tt><big>(</big><em>balls</em>, <em>device</em><big>)</big></dt>
-<dd><p>A player has hit a switch tagged with the player_eject_request_tag.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>balls</strong> &#8211; Integer of the number of balls that will be ejected.</li>
-<li><strong>device</strong> &#8211; The ball device object that will eject the ball(s).</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
 <dt id="mpf.devices.playfield.Playfield.playfield_switch_hit">
-<tt class="descname">playfield_switch_hit</tt><big>(</big><big>)</big></dt>
+<tt class="descname">playfield_switch_hit</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
 <dd><p>A switch tagged with &#8216;&lt;this playfield name&gt;_active&#8217; was just hit,
 indicating that there is at least one ball on the playfield.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="mpf.devices.playfield.Playfield.remove_player_controlled_eject">
-<tt class="descname">remove_player_controlled_eject</tt><big>(</big><big>)</big></dt>
-<dd><p>Removed the player-controlled eject so a player hitting a switch
-no longer calls the device(s) to eject a ball.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mpf.devices.playfield.Playfield.setup_player_controlled_eject">
-<tt class="descname">setup_player_controlled_eject</tt><big>(</big><em>balls</em>, <em>device</em>, <em>trigger_event</em><big>)</big></dt>
-<dd><p>Used to set up an eject from a ball device which will eject a ball to
-the playfield.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>balls</strong> &#8211; Integer of the number of balls this device should eject.</li>
-<li><strong>device</strong> &#8211; The ball device object that will eject the ball(s) when a
-switch with the player-controlled eject tag is hit.</li>
-<li><strong>trigger_event</strong> &#8211; The name of the MPF event that will trigger the
-eject.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>When this method it called, MPF will set up an event handler to look for
-the trigger_event.</p>
-</dd></dl>
+<dt id="mpf.devices.playfield.Playfield.remove_incoming_ball">
+<tt class="descname">remove_incoming_ball</tt><big>(</big><em>source</em><big>)</big></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -352,7 +346,7 @@ the trigger_event.</p>
         <li class="right" >
           <a href="mpf.devices.new_device_template.html" title="mpf.devices.new_device_template module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" >mpf.devices package</a> &raquo;</li> 
       </ul>

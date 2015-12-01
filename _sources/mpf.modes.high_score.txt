@@ -1,0 +1,17 @@
+mpf.modes.high_score package
+============================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    mpf.modes.high_score.code
+
+Module contents
+---------------
+
+.. automodule:: mpf.modes.high_score
+    :members:
+    :undoc-members:
+    :show-inheritance:

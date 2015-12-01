@@ -1,0 +1,7 @@
+tests.test_BallDeviceTriggerEvents module
+=========================================
+
+.. automodule:: tests.test_BallDeviceTriggerEvents
+    :members:
+    :undoc-members:
+    :show-inheritance:

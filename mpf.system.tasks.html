@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.tasks module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.tasks module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.timing module" href="mpf.system.timing.html" />
     <link rel="prev" title="mpf.system.switch_controller module" href="mpf.system.switch_controller.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.switch_controller.html" title="mpf.system.switch_controller module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -64,16 +64,13 @@
 <p>Parent class for a delay manager which can manage multiple delays.</p>
 <dl class="method">
 <dt id="mpf.system.tasks.DelayManager.add">
-<tt class="descname">add</tt><big>(</big><em>name</em>, <em>ms</em>, <em>callback</em>, <em>**kwargs</em><big>)</big></dt>
+<tt class="descname">add</tt><big>(</big><em>ms</em>, <em>callback</em>, <em>name=None</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Adds a delay.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>name</strong> &#8211; String name of this delay. This name is arbitrary and only
-used to identify the delay later if you want to remove or change
-it.</li>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>ms</strong> &#8211; Int of the number of milliseconds you want this delay to be for.
 Note that the resolution of this time is based on your
 machine&#8217;s tick rate. The callback will be called on the
@@ -82,9 +79,15 @@ example, if you have a machine tick rate of 30Hz, that&#8217;s 33.33ms
 per tick. So if you set a delay for 40ms, the actual delay will
 be 66.66ms since that&#8217;s the next tick time after the delay ends.</li>
 <li><strong>callback</strong> &#8211; The method that is called when this delay ends.</li>
+<li><strong>name</strong> &#8211; String name of this delay. This name is arbitrary and only
+used to identify the delay later if you want to remove or change
+it. If you don&#8217;t provide it, a UUID4 name will be created.</li>
 <li><strong>**kwargs</strong> &#8211; Any other (optional) kwarg pairs you pass will be
 passed along as kwargs to the callback method.</li>
 </ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">String name of the delay which you can use to remove it later.</p>
 </td>
 </tr>
 </tbody>
@@ -123,6 +126,11 @@ passed along as kwargs to the callback method.</li>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.tasks.DelayManager.get_next_event">
+<tt class="descname">get_next_event</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.tasks.DelayManager.remove">
 <tt class="descname">remove</tt><big>(</big><em>name</em><big>)</big></dt>
 <dd><p>Removes a delay. (i.e. prevents the callback from being fired and
@@ -155,7 +163,7 @@ adding new delay with the new settings.</p>
 
 <dl class="staticmethod">
 <dt id="mpf.system.tasks.DelayManager.timer_tick">
-<em class="property">static </em><tt class="descname">timer_tick</tt><big>(</big><big>)</big></dt>
+<em class="property">static </em><tt class="descname">timer_tick</tt><big>(</big><em>machine</em><big>)</big></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -260,7 +268,7 @@ and then deleting it.</p>
         <li class="right" >
           <a href="mpf.system.switch_controller.html" title="mpf.system.switch_controller module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

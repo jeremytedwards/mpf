@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.modes.tilt.code.tilt module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.modes.tilt.code package" href="mpf.modes.tilt.code.html" />
+    <link rel="next" title="mpf.platform package" href="mpf.platform.html" />
+    <link rel="prev" title="mpf.modes.tilt.code package" href="mpf.modes.tilt.code.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.html" title="mpf.platform package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.tilt.code.html" title="mpf.modes.tilt.code package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.modes.html" >mpf.modes package</a> &raquo;</li>
+          <li><a href="mpf.modes.tilt.html" >mpf.modes.tilt package</a> &raquo;</li>
+          <li><a href="mpf.modes.tilt.code.html" accesskey="U">mpf.modes.tilt.code package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.modes.tilt.code.tilt">
+<span id="mpf-modes-tilt-code-tilt-module"></span><h1>mpf.modes.tilt.code.tilt module</h1>
+<p>Contains the Tilt mode code</p>
+<dl class="class">
+<dt id="mpf.modes.tilt.code.tilt.Tilt">
+<em class="property">class </em><tt class="descclassname">mpf.modes.tilt.code.tilt.</tt><tt class="descname">Tilt</tt><big>(</big><em>machine</em>, <em>config</em>, <em>name</em>, <em>path</em><big>)</big></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.system.mode.html#mpf.system.mode.Mode" title="mpf.system.mode.Mode"><tt class="xref py py-class docutils literal"><span class="pre">mpf.system.mode.Mode</span></tt></a></p>
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.mode_init">
+<tt class="descname">mode_init</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.mode_start">
+<tt class="descname">mode_start</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.mode_stop">
+<tt class="descname">mode_stop</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.reset_warnings">
+<tt class="descname">reset_warnings</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd><p>Resets the tilt warnings for the current player.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.slam_tilt">
+<tt class="descname">slam_tilt</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.tilt">
+<tt class="descname">tilt</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd><p>Causes the ball to tilt.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.tilt_settle_ms_remaining">
+<tt class="descname">tilt_settle_ms_remaining</tt><big>(</big><big>)</big></dt>
+<dd><p>Returns the amount of milliseconds remaining until the tilt settle
+time has cleared.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.tilt.code.tilt.Tilt.tilt_warning">
+<tt class="descname">tilt_warning</tt><big>(</big><big>)</big></dt>
+<dd><p>Processes a tilt warning. If the number of warnings is the number to
+cause a tilt, a tilt will be processed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.modes.tilt.code.html"
+                        title="previous chapter">mpf.modes.tilt.code package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.platform.html"
+                        title="next chapter">mpf.platform package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.modes.tilt.code.tilt.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.html" title="mpf.platform package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.tilt.code.html" title="mpf.modes.tilt.code package"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.modes.html" >mpf.modes package</a> &raquo;</li>
+          <li><a href="mpf.modes.tilt.html" >mpf.modes.tilt package</a> &raquo;</li>
+          <li><a href="mpf.modes.tilt.code.html" >mpf.modes.tilt.code package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

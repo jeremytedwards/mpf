@@ -12,6 +12,7 @@ Submodules
    mpf.devices.ball_save
    mpf.devices.diverter
    mpf.devices.driver
+   mpf.devices.driver_enabled
    mpf.devices.drop_target
    mpf.devices.flasher
    mpf.devices.flipper

@@ -1,0 +1,7 @@
+tests.test_BallDeviceHoldCoil module
+====================================
+
+.. automodule:: tests.test_BallDeviceHoldCoil
+    :members:
+    :undoc-members:
+    :show-inheritance:

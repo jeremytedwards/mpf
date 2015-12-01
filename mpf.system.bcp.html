@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.bcp module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.bcp module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.config module" href="mpf.system.config.html" />
     <link rel="prev" title="mpf.system.ball_controller module" href="mpf.system.ball_controller.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.ball_controller.html" title="mpf.system.ball_controller module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -81,7 +81,7 @@ config?volume=0.5
 error
 get
 goodbye
-hello?version=xxx
+hello?version=xxx&amp;controller_name=xxx&amp;controller_version=xxx
 mode_start?name=xxx&amp;priority=xxx
 mode_stop?name=xxx
 player_added?player_num=x
@@ -94,6 +94,11 @@ switch?name=x&amp;state=x
 timer
 trigger?name=xxx</dd>
 </dl>
+<dl class="attribute">
+<dt id="mpf.system.bcp.BCP.active_connections">
+<tt class="descname">active_connections</tt><em class="property"> = 0</em></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="mpf.system.bcp.BCP.bcp_mode_start">
 <tt class="descname">bcp_mode_start</tt><big>(</big><em>config</em>, <em>priority</em>, <em>mode</em>, <em>**kwargs</em><big>)</big></dt>
@@ -131,29 +136,46 @@ at this point.</p>
 
 <dl class="method">
 <dt id="mpf.system.bcp.BCP.bcp_receive_get">
-<tt class="descname">bcp_receive_get</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
-<dd><p>Processes an incoming BCP &#8216;get&#8217; command.</p>
-<p>Note that this media controller doesn&#8217;t implement the &#8216;get&#8217; command at
-this time, but it&#8217;s included here for completeness since the &#8216;get&#8217;
-command is part of the BCP 1.0 specification so we don&#8217;t want to return
-an error if we receive an incoming &#8216;get&#8217; command.</p>
+<tt class="descname">bcp_receive_get</tt><big>(</big><em>names</em>, <em>**kwargs</em><big>)</big></dt>
+<dd><p>Processes an incoming BCP &#8216;get&#8217; command by posting an event
+&#8216;bcp_get_&lt;name&gt;&#8217;. It&#8217;s up to an event handler to register for that
+event and to send the response BCP &#8216;set&#8217; command.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.bcp.BCP.bcp_receive_reset_complete">
+<tt class="descname">bcp_receive_reset_complete</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.bcp.BCP.bcp_receive_set">
 <tt class="descname">bcp_receive_set</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
-<dd><p>Processes an incoming BCP &#8216;set&#8217; command.</p>
-<p>Note that this media controller doesn&#8217;t implement the &#8216;set&#8217; command at
-this time, but it&#8217;s included here for completeness since the &#8216;set&#8217;
-command is part of the BCP 1.0 specification so we don&#8217;t want to return
-an error if we receive an incoming &#8216;set&#8217; command.</p>
+<dd><p>Processes an incoming BCP &#8216;set&#8217; command by posting an event
+&#8216;bcp_set_&lt;name&gt;&#8217; with a parameter value=&lt;value&gt;. It&#8217;s up to an event
+handler to register for that event and to do something with it.</p>
+<p>Note that BCP set commands can contain multiple key/value pairs, and
+this method will post one event for each pair.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.bcp.BCP.bcp_receive_switch">
-<tt class="descname">bcp_receive_switch</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<tt class="descname">bcp_receive_switch</tt><big>(</big><em>name</em>, <em>state</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Processes an incoming switch state change request from a remote BCP
 host.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String name of the switch to set.</li>
+<li><strong>state</strong> &#8211; Integer representing the state this switch will be set to.
+1 = active, 0 = inactive, -1 means this switch will be flipped
+from whatever its current state is to the opposite state.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -317,9 +339,34 @@ switch(es), when activated, decrease the volume.</li>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.bcp.BCP.external_show_frame">
+<tt class="descname">external_show_frame</tt><big>(</big><em>name</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.bcp.BCP.external_show_start">
+<tt class="descname">external_show_start</tt><big>(</big><em>name</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.bcp.BCP.external_show_stop">
+<tt class="descname">external_show_stop</tt><big>(</big><em>name</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.bcp.BCP.get_bcp_messages">
 <tt class="descname">get_bcp_messages</tt><big>(</big><big>)</big></dt>
 <dd><p>Retrieves and processes new BCP messages from the receiving queue.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.bcp.BCP.get_led_coordinates">
+<tt class="descname">get_led_coordinates</tt><big>(</big><big>)</big></dt>
+<dd><p>Creates a list of all LEDs with their corresponding x and y coordinates.  Only
+LEDs that have been configured with both x and y coordinates are included in the
+list.  The list is sent via BCP set command in the following delimited format:</p>
+<blockquote>
+<div>led_coordinates=led_01:x,y;led_02:x,y;led_03:x,y;...</div></blockquote>
 </dd></dl>
 
 <dl class="method">
@@ -438,6 +485,11 @@ with the BCP command.</li>
 <dd>trigger?ball=1&amp;string=hello</dd>
 </dl>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.bcp.BCP.send_trigger">
+<tt class="descname">send_trigger</tt><big>(</big><em>name</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.bcp.BCP.set_volume">
@@ -693,7 +745,7 @@ will be preserved.</p>
         <li class="right" >
           <a href="mpf.system.ball_controller.html" title="mpf.system.ball_controller module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

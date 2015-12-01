@@ -1,0 +1,7 @@
+tests.test_BallDeviceSwitchConfirmation module
+==============================================
+
+.. automodule:: tests.test_BallDeviceSwitchConfirmation
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.platform module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.platform module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.player module" href="mpf.system.player.html" />
     <link rel="prev" title="mpf.system.mode_controller module" href="mpf.system.mode_controller.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.mode_controller.html" title="mpf.system.mode_controller module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -147,6 +147,11 @@ should return the raw hardware states of the switches.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.platform.Platform.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.platform.Platform.run_loop">
 <tt class="descname">run_loop</tt><big>(</big><big>)</big></dt>
 <dd><p>Subclass this method in a platform module if the platform will
@@ -168,7 +173,7 @@ prevent 100% CPU utilization.)</p>
 
 <dl class="method">
 <dt id="mpf.system.platform.Platform.set_hw_rule">
-<tt class="descname">set_hw_rule</tt><big>(</big><em>sw_name</em>, <em>sw_activity</em>, <em>coil_name=None</em>, <em>coil_action_ms=0</em>, <em>pulse_ms=0</em>, <em>pwm_on=0</em>, <em>pwm_off=0</em>, <em>delay=0</em>, <em>recycle_time=0</em>, <em>debounced=False</em>, <em>drive_now=False</em><big>)</big></dt>
+<tt class="descname">set_hw_rule</tt><big>(</big><em>sw_name</em>, <em>sw_activity</em>, <em>driver_name</em>, <em>driver_action</em>, <em>disable_on_release=True</em>, <em>drive_now=False</em>, <em>**driver_settings_overrides</em><big>)</big></dt>
 <dd><p>Writes a hardware rule to the controller.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -178,22 +183,16 @@ prevent 100% CPU utilization.)</p>
 <li><strong>sw_name</strong> &#8211; String name of the switch.</li>
 <li><strong>sw_activity</strong> &#8211; Int representing the switch state this rule will be set
 for. 1 is active, 0 is inactive.</li>
-<li><strong>coil_name</strong> &#8211; String name of the coil.</li>
-<li><strong>coil_action_ms</strong> &#8211; Total time in ms the coil should activate for.</li>
-<li><strong>pulse_ms</strong> &#8211; How long in ms the coil should activate for. Default is 0.</li>
-<li><strong>pwn_on</strong> &#8211; The &#8216;on&#8217; portion, in ms of a pwm-based patter. Default is 0.</li>
-<li><strong>pwm_off</strong> &#8211; The &#8216;off&#8217; portion, in ms, of a pwm-based patter. Default is
-0.</li>
-<li><strong>delay</strong> &#8211; The delay, in ms, the coil should wait before firing. Default
-is 0.</li>
-<li><strong>recycle_time</strong> &#8211; How long the coil must be inactive, in ms, before it
-can be fired again via this rule. Default is 0.</li>
+<li><strong>driver_name</strong> &#8211; String name of the driver.</li>
+<li><strong>driver_action</strong> &#8211; String &#8216;pulse&#8217;, &#8216;hold&#8217;, or &#8216;disable&#8217; which describe
+what action will be applied to this driver</li>
 <li><strong>debounced</strong> &#8211; Boolean which specifies whether this coil should activate
 on a debounced or non-debounced switch change state. Default is
 False (non-debounced).</li>
-<li><strong>drive_name</strong> &#8211; Boolean which controls whether the coil should activate
+<li><strong>drive_now</strong> &#8211; Boolean which controls whether the coil should activate
 immediately when this rule is applied if the switch currently in
 in the state set in this rule.</li>
+<li><strong>**driver_settings_overrides</strong> &#8211; Platform-specific settings</li>
 </ul>
 </td>
 </tr>
@@ -204,6 +203,16 @@ the incoming parameters into a format that is more widely-used by
 hardware controls. It&#8217;s intended that platform interfaces subclass
 <cite>write_hw_rule()</cite> instead of this method, though this method may be
 subclassed if you wish.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.platform.Platform.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big></dt>
+<dd><p>Subclass this method in the platform module if you need to perform
+any actions to gracefully stop the platform interface.</p>
+<p>This could do things like reseting it, stopping events, etc.</p>
+<p>This method will be called when MPF stops, including when an MPF thread
+crashes.</p>
 </dd></dl>
 
 <dl class="method">
@@ -230,7 +239,7 @@ this premature optimization?)</p>
 
 <dl class="method">
 <dt id="mpf.system.platform.Platform.write_hw_rule">
-<tt class="descname">write_hw_rule</tt><big>(</big><em>sw</em>, <em>sw_activity</em>, <em>coil_action_ms</em>, <em>coil</em>, <em>pulse_ms</em>, <em>pwm_on</em>, <em>pwm_off</em>, <em>delay</em>, <em>recycle_time</em>, <em>debounced</em>, <em>drive_now</em><big>)</big></dt>
+<tt class="descname">write_hw_rule</tt><big>(</big><em>switch_obj</em>, <em>sw_activity</em>, <em>driver_obj</em>, <em>driver_action</em>, <em>disable_on_release</em>, <em>drive_now</em>, <em>**driver_settings_overrides</em><big>)</big></dt>
 <dd><p>Subclass this method in a platform interface to write a hardware
 switch rule to the controller.</p>
 <p>Game programmers will typically use <cite>set_hw_rule</cite> instead of this method
@@ -291,7 +300,7 @@ it&#8217;s a bit more convenient.</p>
         <li class="right" >
           <a href="mpf.system.mode_controller.html" title="mpf.system.mode_controller module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

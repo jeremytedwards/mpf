@@ -1,0 +1,7 @@
+tests.test_BallDeviceAutoManualPlunger module
+=============================================
+
+.. automodule:: tests.test_BallDeviceAutoManualPlunger
+    :members:
+    :undoc-members:
+    :show-inheritance:

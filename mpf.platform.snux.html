@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.platform.snux module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.platform package" href="mpf.platform.html" />
+    <link rel="next" title="mpf.platform.virtual module" href="mpf.platform.virtual.html" />
+    <link rel="prev" title="mpf.platform.smartmatrix module" href="mpf.platform.smartmatrix.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.virtual.html" title="mpf.platform.virtual module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.smartmatrix.html" title="mpf.platform.smartmatrix module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.platform.html" accesskey="U">mpf.platform package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.platform.snux">
+<span id="mpf-platform-snux-module"></span><h1>mpf.platform.snux module</h1>
+<p>Contains the base class for the Snux driver overlay.</p>
+<p>This class overlays an existing WPC-compatible platform interface to work with
+Mark Sunnucks&#8217;s System 11 interface board.</p>
+<dl class="class">
+<dt id="mpf.platform.snux.Snux">
+<em class="property">class </em><tt class="descclassname">mpf.platform.snux.</tt><tt class="descname">Snux</tt><big>(</big><em>machine</em>, <em>platform</em><big>)</big></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="mpf.platform.snux.Snux.a_side_busy">
+<tt class="descname">a_side_busy</tt></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.platform.snux.Snux.c_side_active">
+<tt class="descname">c_side_active</tt></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.configure_driver">
+<tt class="descname">configure_driver</tt><big>(</big><em>config</em>, <em>device_type='coil'</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.platform.snux.Snux.diag_led">
+<tt class="descname">diag_led</tt><em class="property"> = None</em></dt>
+<dd><p>Diagnostics LED (LED 3) on the Snux board turns on solid when MPF
+first connects, then starts flashing once the MPF init is done.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.driver_action">
+<tt class="descname">driver_action</tt><big>(</big><em>driver</em>, <em>milliseconds</em><big>)</big></dt>
+<dd><p>Adds a driver action for a switched driver to the queue (for either
+the A-side or C-side queue).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>driver</strong> &#8211; A reference to the original platform class Driver instance.</li>
+<li><strong>milliseconds</strong> &#8211; Integer of the number of milliseconds this action is
+for. 0 = pulse, -1 = enable (hold), any other value is a timed
+action (either pulse or long_pulse)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This action will be serviced immediately if it can, or ASAP otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.flash_diag_led">
+<tt class="descname">flash_diag_led</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big></dt>
+<dd><p>Automatically called by the Platform class after all the system
+modules are loaded.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.null_log_handler">
+<tt class="descname">null_log_handler</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.Snux.write_hw_rule">
+<tt class="descname">write_hw_rule</tt><big>(</big><em>switch_obj</em>, <em>sw_activity</em>, <em>driver_obj</em>, <em>driver_action</em>, <em>disable_on_release</em>, <em>drive_now</em>, <em>**driver_settings_overrides</em><big>)</big></dt>
+<dd><p>On system 11 machines, Switched drivers cannot be configured with
+autofire hardware rules.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mpf.platform.snux.SnuxDriver">
+<em class="property">class </em><tt class="descclassname">mpf.platform.snux.</tt><tt class="descname">SnuxDriver</tt><big>(</big><em>number</em>, <em>platform_driver</em>, <em>overlay</em><big>)</big></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="mpf.platform.snux.SnuxDriver.disable">
+<tt class="descname">disable</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.SnuxDriver.enable">
+<tt class="descname">enable</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.snux.SnuxDriver.pulse">
+<tt class="descname">pulse</tt><big>(</big><em>milliseconds=None</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.platform.snux.driver_overlay_class">
+<tt class="descclassname">mpf.platform.snux.</tt><tt class="descname">driver_overlay_class</tt></dt>
+<dd><p>alias of <a class="reference internal" href="#mpf.platform.snux.Snux" title="mpf.platform.snux.Snux"><tt class="xref py py-class docutils literal"><span class="pre">Snux</span></tt></a></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.platform.smartmatrix.html"
+                        title="previous chapter">mpf.platform.smartmatrix module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.platform.virtual.html"
+                        title="next chapter">mpf.platform.virtual module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.platform.snux.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.virtual.html" title="mpf.platform.virtual module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.smartmatrix.html" title="mpf.platform.smartmatrix module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.platform.html" >mpf.platform package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

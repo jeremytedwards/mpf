@@ -1,0 +1,7 @@
+tests.test_EventManager module
+==============================
+
+.. automodule:: tests.test_EventManager
+    :members:
+    :undoc-members:
+    :show-inheritance:

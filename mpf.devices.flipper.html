@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.devices.flipper module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.devices.flipper module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.devices package" href="mpf.devices.html" />
     <link rel="next" title="mpf.devices.gi module" href="mpf.devices.gi.html" />
     <link rel="prev" title="mpf.devices.flasher module" href="mpf.devices.flasher.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.devices.flasher.html" title="mpf.devices.flasher module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" accesskey="U">mpf.devices package</a> &raquo;</li> 
       </ul>
@@ -130,24 +130,18 @@ setting and will not be applied to the hardware if it&#8217;s True.</p>
 Rule  Type     Coil  Switch  Action
 A.    Enable   Main  Button  active
 D.    Enable   Hold  Button  active
-E.    Disable  Main  EOS     active
-F.    Disable  Main  Button  inactive
-G.    Disable  Hold  Button  inactive</p>
+E.    Disable  Main  EOS     active</p>
 <p>One coil, using EOS switch
 Rule  Type     Coil  Switch  Action
 A.    Enable   Main  Button  active
-H.    PWM      Main  EOS     active
-F.    Disable  Main  Button  inactive</p>
+H.    PWM      Main  EOS     active</p>
 <p>Two coils, not using EOS switch:
 Rule  Type     Coil  Switch  Action
 B.    Pulse    Main  Button  active
-D.    Enable   Hold  Button  active
-F.    Disable  Main  Button  inactive
-G.    Disable  Hold  Button  inactive</p>
+D.    Enable   Hold  Button  active</p>
 <p>One coil, not using EOS switch
 Rule  Type       Coil  Switch  Action
-C.    Pulse/PWM  Main  button  active
-F.    Disable    Main  button  inactive</p>
+C.    Pulse/PWM  Main  button  active</p>
 <p>Use EOS switch for safety (for platforms that support mutiple switch
 rules). Note that this rule is the letter &#8220;i&#8221;, not a numeral 1.
 I. Enable power if button is active and EOS is not active</p>
@@ -176,15 +170,6 @@ percentage of power the flippers will be enabled at.</td>
 </tr>
 </tbody>
 </table>
-<p>This mode is not yet implemented.</p>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="mpf.devices.flipper.Flipper.invert">
-<em class="property">classmethod </em><tt class="descname">invert</tt><big>(</big><big>)</big></dt>
-<dd><p>Enables inverted flippers.</p>
-<p>Inverted flippers is a novelty mode where the left flipper button
-controls the right flippers and vice-versa.</p>
 <p>This mode is not yet implemented.</p>
 </dd></dl>
 
@@ -260,7 +245,7 @@ released. See the documentation for sw_flip() for details.</p>
         <li class="right" >
           <a href="mpf.devices.flasher.html" title="mpf.devices.flasher module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" >mpf.devices package</a> &raquo;</li> 
       </ul>

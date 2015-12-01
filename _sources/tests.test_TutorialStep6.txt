@@ -1,0 +1,7 @@
+tests.test_TutorialStep6 module
+===============================
+
+.. automodule:: tests.test_TutorialStep6
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -11,6 +11,9 @@ Submodules
    mpf.platform.openpixel
    mpf.platform.p3_roc
    mpf.platform.p_roc
+   mpf.platform.smart_virtual
+   mpf.platform.smartmatrix
+   mpf.platform.snux
    mpf.platform.virtual
 
 Module contents

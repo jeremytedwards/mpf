@@ -7,7 +7,10 @@ Subpackages
 .. toctree::
 
     mpf.modes.attract
+    mpf.modes.credits
     mpf.modes.game
+    mpf.modes.high_score
+    mpf.modes.tilt
 
 Module contents
 ---------------

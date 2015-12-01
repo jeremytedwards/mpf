@@ -1,0 +1,7 @@
+tests.test_TutorialStep9 module
+===============================
+
+.. automodule:: tests.test_TutorialStep9
+    :members:
+    :undoc-members:
+    :show-inheritance:

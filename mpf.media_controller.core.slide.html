@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.media_controller.core.slide module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.media_controller.core.slide module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.media_controller.core package" href="mpf.media_controller.core.html" />
     <link rel="next" title="mpf.media_controller.core.slide_builder module" href="mpf.media_controller.core.slide_builder.html" />
     <link rel="prev" title="mpf.media_controller.core.show_controller module" href="mpf.media_controller.core.show_controller.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.media_controller.core.show_controller.html" title="mpf.media_controller.core.show_controller module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
           <li><a href="mpf.media_controller.core.html" accesskey="U">mpf.media_controller.core package</a> &raquo;</li> 
@@ -61,7 +61,7 @@
 <p>Contains the Slide parent class.</p>
 <dl class="class">
 <dt id="mpf.media_controller.core.slide.Slide">
-<em class="property">class </em><tt class="descclassname">mpf.media_controller.core.slide.</tt><tt class="descname">Slide</tt><big>(</big><em>mpfdisplay</em>, <em>machine</em>, <em>name=None</em>, <em>priority=0</em>, <em>persist=False</em>, <em>removal_key=None</em>, <em>expire_ms=0</em>, <em>mode=None</em><big>)</big></dt>
+<em class="property">class </em><tt class="descclassname">mpf.media_controller.core.slide.</tt><tt class="descname">Slide</tt><big>(</big><em>mpfdisplay</em>, <em>machine</em>, <em>priority=0</em>, <em>persist=False</em>, <em>expire_ms=0</em>, <em>mode=None</em>, <em>name=None</em><big>)</big></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Parent class for a Slide object.</p>
 <p>MPF uses the concept of &#8220;slides&#8221; (think PowerPoint) as a collection of
@@ -78,8 +78,6 @@ between an old slide and a new slide.</p>
 <li><strong>name</strong> &#8211; String name of this slide.</li>
 <li><strong>persist</strong> &#8211; Boolean as for whether this slide should be automatically
 destroyed once it&#8217;s not shown on the display anymore.</li>
-<li><strong>removal_key</strong> &#8211; A unique key that can identify this slide for its removal
-later.</li>
 <li><strong>expire_ms</strong> &#8211; How many ms this slide should live for. Default is 0 which
 means it will not automatically be removed.</li>
 <li><strong>mode</strong> &#8211; A reference to the Mode which created this slide.</li>
@@ -155,13 +153,6 @@ as soon as it&#8217;s no longer active.</p>
 <dt id="mpf.media_controller.core.slide.Slide.palette">
 <tt class="descname">palette</tt></dt>
 <dd><p>The Pygame palette this slide uses. (8-bit only)</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.media_controller.core.slide.Slide.removal_key">
-<tt class="descname">removal_key</tt></dt>
-<dd><p>Unique identifier that can be used later to remove this
-slide.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -255,6 +246,16 @@ called for.</p>
 black.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="mpf.media_controller.core.slide.Slide.creation_id">
+<tt class="descname">creation_id</tt><em class="property"> = 0</em></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mpf.media_controller.core.slide.Slide.get_creation_id">
+<em class="property">classmethod </em><tt class="descname">get_creation_id</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="mpf.media_controller.core.slide.Slide.get_subsurface">
 <tt class="descname">get_subsurface</tt><big>(</big><em>rect</em>, <em>layer=0</em><big>)</big></dt>
@@ -314,9 +315,23 @@ the elements to be marked as dirty so they&#8217;re regenerated.</td>
 
 <dl class="method">
 <dt id="mpf.media_controller.core.slide.Slide.remove">
-<tt class="descname">remove</tt><big>(</big><big>)</big></dt>
-<dd><p>Removes the slide. If this slide is active, the next-highest priority
-slide will automatically be shown.</p>
+<tt class="descname">remove</tt><big>(</big><em>refresh_display=True</em>, <em>post_event=False</em><big>)</big></dt>
+<dd><p>Removes the slide.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>refresh_display</strong> &#8211; Boolean if you want the display to refresh itself
+based on changes that occurred due to this slide removal.
+Default is True, but if you&#8217;re looping through and removing a
+bunch of slides, you can use False and then manually call it
+once when you&#8217;re done.</td>
+</tr>
+</tbody>
+</table>
+<p>This method will scrub the elements which will remove and shut them
+down, remove any active delays, and remove this slide from the display
+slides list.</p>
 </dd></dl>
 
 <dl class="method">
@@ -334,8 +349,8 @@ slide will automatically be shown.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="mpf.media_controller.core.slide.Slide.schedule_removal">
-<tt class="descname">schedule_removal</tt><big>(</big><em>removal_time=None</em><big>)</big></dt>
+<dt id="mpf.media_controller.core.slide.Slide.schedule_expire">
+<tt class="descname">schedule_expire</tt><big>(</big><em>removal_time=None</em><big>)</big></dt>
 <dd><p>Schedules this slide to automatically be removed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -351,14 +366,9 @@ removed.</td>
 </dd></dl>
 
 <dl class="method">
-<dt id="mpf.media_controller.core.slide.Slide.show">
-<tt class="descname">show</tt><big>(</big><big>)</big></dt>
-<dd><p>Shows this slide by making it active.</p>
-<p>This is immediate. If you want a transition, use the
-MPFDisplay.transition() method.</p>
-<p>This method will only show the slide if its priority is the same or
-higher than the existing slide.</p>
-</dd></dl>
+<dt id="mpf.media_controller.core.slide.Slide.tickle">
+<tt class="descname">tickle</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.media_controller.core.slide.Slide.update">
@@ -420,7 +430,7 @@ and blits the results if there&#8217;s an update.</p>
         <li class="right" >
           <a href="mpf.media_controller.core.show_controller.html" title="mpf.media_controller.core.show_controller module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
           <li><a href="mpf.media_controller.core.html" >mpf.media_controller.core package</a> &raquo;</li> 

@@ -10,9 +10,12 @@ Submodules
    mpf.system.ball_controller
    mpf.system.bcp
    mpf.system.config
+   mpf.system.config_parser
+   mpf.system.data_manager
    mpf.system.device
    mpf.system.device_manager
    mpf.system.events
+   mpf.system.file_manager
    mpf.system.light_controller
    mpf.system.logic_blocks
    mpf.system.machine
@@ -26,6 +29,7 @@ Submodules
    mpf.system.switch_controller
    mpf.system.tasks
    mpf.system.timing
+   mpf.system.utility_functions
 
 Module contents
 ---------------

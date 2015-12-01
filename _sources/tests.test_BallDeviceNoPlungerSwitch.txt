@@ -1,0 +1,7 @@
+tests.test_BallDeviceNoPlungerSwitch module
+===========================================
+
+.. automodule:: tests.test_BallDeviceNoPlungerSwitch
+    :members:
+    :undoc-members:
+    :show-inheritance:

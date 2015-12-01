@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.system.file_manager module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.system package" href="mpf.system.html" />
+    <link rel="next" title="mpf.system.light_controller module" href="mpf.system.light_controller.html" />
+    <link rel="prev" title="mpf.system.events module" href="mpf.system.events.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.light_controller.html" title="mpf.system.light_controller module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.events.html" title="mpf.system.events module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.system.file_manager">
+<span id="mpf-system-file-manager-module"></span><h1>mpf.system.file_manager module</h1>
+<p>Contains the FileManager and FileInterface base classes.</p>
+<dl class="class">
+<dt id="mpf.system.file_manager.FileInterface">
+<em class="property">class </em><tt class="descclassname">mpf.system.file_manager.</tt><tt class="descname">FileInterface</tt></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="mpf.system.file_manager.FileInterface.file_types">
+<tt class="descname">file_types</tt><em class="property"> = []</em></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.file_manager.FileInterface.find_file">
+<tt class="descname">find_file</tt><big>(</big><em>filename</em><big>)</big></dt>
+<dd><p>Tests whether the passed file is valid. If the file does not have an
+externsion, this method will test for files with that base name with
+all the extensions it can read.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> &#8211; Full absolute path of a file to check, with or without
+an extension.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">False if a file is not found.
+Tuple of (full file with path, extension) if a file is found</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.file_manager.FileInterface.get_config_file_version">
+<em class="property">static </em><tt class="descname">get_config_file_version</tt><big>(</big><em>filename</em><big>)</big></dt>
+<dd><p>Gets the config version number from a file. Since this technique
+varies depending on the file type, it needs to be implemented in the
+chile class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> &#8211; The file with path to check.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An int of the config file version</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.file_manager.FileInterface.load">
+<tt class="descname">load</tt><big>(</big><em>filename</em>, <em>verify_version=True</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.file_manager.FileInterface.save">
+<tt class="descname">save</tt><big>(</big><em>filename</em>, <em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mpf.system.file_manager.FileManager">
+<em class="property">class </em><tt class="descclassname">mpf.system.file_manager.</tt><tt class="descname">FileManager</tt></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="attribute">
+<dt id="mpf.system.file_manager.FileManager.file_interfaces">
+<tt class="descname">file_interfaces</tt><em class="property"> = {}</em></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.file_manager.FileManager.get_file_interface">
+<em class="property">static </em><tt class="descname">get_file_interface</tt><big>(</big><em>filename</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="mpf.system.file_manager.FileManager.init">
+<em class="property">classmethod </em><tt class="descname">init</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.file_manager.FileManager.load">
+<em class="property">static </em><tt class="descname">load</tt><big>(</big><em>filename</em>, <em>verify_version=False</em>, <em>halt_on_error=False</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.file_manager.FileManager.locate_file">
+<em class="property">static </em><tt class="descname">locate_file</tt><big>(</big><em>filename</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.file_manager.FileManager.log">
+<tt class="descname">log</tt><em class="property"> = &lt;logging.Logger object at 0x10438a950&gt;</em></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.file_manager.FileManager.save">
+<em class="property">static </em><tt class="descname">save</tt><big>(</big><em>filename</em>, <em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.system.events.html"
+                        title="previous chapter">mpf.system.events module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.system.light_controller.html"
+                        title="next chapter">mpf.system.light_controller module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.system.file_manager.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.light_controller.html" title="mpf.system.light_controller module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.events.html" title="mpf.system.events module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

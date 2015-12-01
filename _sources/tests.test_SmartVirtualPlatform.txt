@@ -1,0 +1,7 @@
+tests.test_SmartVirtualPlatform module
+======================================
+
+.. automodule:: tests.test_SmartVirtualPlatform
+    :members:
+    :undoc-members:
+    :show-inheritance:

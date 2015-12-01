@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.media_controller.core.transition module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.media_controller.core package" href="mpf.media_controller.core.html" />
+    <link rel="next" title="mpf.media_controller.core.window module" href="mpf.media_controller.core.window.html" />
+    <link rel="prev" title="mpf.media_controller.core.sound module" href="mpf.media_controller.core.sound.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.core.window.html" title="mpf.media_controller.core.window module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.core.sound.html" title="mpf.media_controller.core.sound module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
+          <li><a href="mpf.media_controller.core.html" accesskey="U">mpf.media_controller.core package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.media_controller.core.transition">
+<span id="mpf-media-controller-core-transition-module"></span><h1>mpf.media_controller.core.transition module</h1>
+<p>Contains the Transition base class.</p>
+<dl class="class">
+<dt id="mpf.media_controller.core.transition.Transition">
+<em class="property">class </em><tt class="descclassname">mpf.media_controller.core.transition.</tt><tt class="descname">Transition</tt><big>(</big><em>mpfdisplay</em>, <em>machine</em>, <em>priority</em>, <em>mode</em>, <em>slide_a</em>, <em>slide_b</em>, <em>duration='1s'</em>, <em>**kwargs</em><big>)</big></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.media_controller.core.slide.html#mpf.media_controller.core.slide.Slide" title="mpf.media_controller.core.slide.Slide"><tt class="xref py py-class docutils literal"><span class="pre">mpf.media_controller.core.slide.Slide</span></tt></a></p>
+<p>Parent class for all slide Transition objects. Subclasses Slide.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>mpfdisplay</strong> &#8211; The MPFDisplay object this transition is for.</li>
+<li><strong>machine</strong> &#8211; The main MachineController object.</li>
+<li><strong>slide_a</strong> &#8211; The current (outgoing) Slide.</li>
+<li><strong>slide_b</strong> &#8211; The new (incoming) Slide.</li>
+<li><strong>duration</strong> &#8211; MPF timing string for how long this transition will take.
+Default is 1 second.</li>
+<li><strong>**kwargs</strong> &#8211; Any additional key/value settings for this transition. (All
+transitions are different and have different settings.)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mpf.media_controller.core.transition.Transition.slide_a">
+<tt class="descname">slide_a</tt></dt>
+<dd><p>Outgoing slide.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.media_controller.core.transition.Transition.slide_b">
+<tt class="descname">slide_b</tt></dt>
+<dd><p>Incoming slide.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.media_controller.core.transition.Transition.duration">
+<tt class="descname">duration</tt></dt>
+<dd><p>Duration in seconds (float or int).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.media_controller.core.transition.Transition.start_time">
+<tt class="descname">start_time</tt></dt>
+<dd><p>Real world time when this transition began.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.media_controller.core.transition.Transition.end_time">
+<tt class="descname">end_time</tt></dt>
+<dd><p>Real world time when this transition will complete.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.media_controller.core.transition.Transition.complete">
+<tt class="descname">complete</tt><big>(</big><big>)</big></dt>
+<dd><p>Mark this transition as complete.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.media_controller.core.transition.Transition.update">
+<tt class="descname">update</tt><big>(</big><big>)</big></dt>
+<dd><p>Called to update the slide with the latest transition animation.</p>
+<p>Completely replaces the update() method in the parent class since the
+transition class is a special type of slide.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.media_controller.core.sound.html"
+                        title="previous chapter">mpf.media_controller.core.sound module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.media_controller.core.window.html"
+                        title="next chapter">mpf.media_controller.core.window module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.media_controller.core.transition.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.core.window.html" title="mpf.media_controller.core.window module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.core.sound.html" title="mpf.media_controller.core.sound module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
+          <li><a href="mpf.media_controller.core.html" >mpf.media_controller.core package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

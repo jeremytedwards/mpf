@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.platform.virtual module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.platform.virtual module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,10 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.platform package" href="mpf.platform.html" />
     <link rel="next" title="mpf.plugins package" href="mpf.plugins.html" />
-    <link rel="prev" title="mpf.platform.p_roc module" href="mpf.platform.p_roc.html" /> 
+    <link rel="prev" title="mpf.platform.snux module" href="mpf.platform.snux.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,9 +42,9 @@
           <a href="mpf.plugins.html" title="mpf.plugins package"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="mpf.platform.p_roc.html" title="mpf.platform.p_roc module"
+          <a href="mpf.platform.snux.html" title="mpf.platform.snux module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.platform.html" accesskey="U">mpf.platform package</a> &raquo;</li> 
       </ul>
@@ -140,33 +140,13 @@ that it doesn&#8217;t require any P-ROC drivers or modules to be installed.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.platform.virtual.VirtualDriver.future_pulse">
-<tt class="descname">future_pulse</tt><big>(</big><em>milliseconds=None</em>, <em>timestamp=0</em><big>)</big></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="mpf.platform.virtual.VirtualDriver.pulse">
 <tt class="descname">pulse</tt><big>(</big><em>milliseconds=None</em><big>)</big></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.platform.virtual.VirtualDriver.pulsed_patter">
-<tt class="descname">pulsed_patter</tt><big>(</big><em>on_ms=10</em>, <em>off_ms=10</em>, <em>run_time=0</em>, <em>now=True</em><big>)</big></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="mpf.platform.virtual.VirtualDriver.pwm">
-<tt class="descname">pwm</tt><big>(</big><em>on_ms=10</em>, <em>off_ms=10</em>, <em>original_on_ms=0</em>, <em>now=True</em><big>)</big></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="mpf.platform.virtual.VirtualDriver.reconfigure">
 <tt class="descname">reconfigure</tt><big>(</big><em>polarity</em><big>)</big></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="mpf.platform.virtual.VirtualDriver.schedule">
-<tt class="descname">schedule</tt><big>(</big><em>schedule</em>, <em>cycle_seconds=0</em>, <em>now=True</em><big>)</big></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -177,6 +157,11 @@ that it doesn&#8217;t require any P-ROC drivers or modules to be installed.</p>
 <dl class="method">
 <dt id="mpf.platform.virtual.VirtualDriver.tick">
 <tt class="descname">tick</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.virtual.VirtualDriver.validate_driver_settings">
+<tt class="descname">validate_driver_settings</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -250,8 +235,8 @@ that it doesn&#8217;t require any P-ROC drivers or modules to be installed.</p>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="mpf.platform.p_roc.html"
-                        title="previous chapter">mpf.platform.p_roc module</a></p>
+  <p class="topless"><a href="mpf.platform.snux.html"
+                        title="previous chapter">mpf.platform.snux module</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="mpf.plugins.html"
                         title="next chapter">mpf.plugins package</a></p>
@@ -290,9 +275,9 @@ that it doesn&#8217;t require any P-ROC drivers or modules to be installed.</p>
           <a href="mpf.plugins.html" title="mpf.plugins package"
              >next</a> |</li>
         <li class="right" >
-          <a href="mpf.platform.p_roc.html" title="mpf.platform.p_roc module"
+          <a href="mpf.platform.snux.html" title="mpf.platform.snux module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.platform.html" >mpf.platform package</a> &raquo;</li> 
       </ul>

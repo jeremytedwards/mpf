@@ -1,0 +1,7 @@
+mpf.platform.smart_virtual module
+=================================
+
+.. automodule:: mpf.platform.smart_virtual
+    :members:
+    :undoc-members:
+    :show-inheritance:

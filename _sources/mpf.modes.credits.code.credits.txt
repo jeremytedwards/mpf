@@ -1,0 +1,7 @@
+mpf.modes.credits.code.credits module
+=====================================
+
+.. automodule:: mpf.modes.credits.code.credits
+    :members:
+    :undoc-members:
+    :show-inheritance:

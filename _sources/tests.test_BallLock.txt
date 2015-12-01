@@ -1,0 +1,7 @@
+tests.test_BallLock module
+==========================
+
+.. automodule:: tests.test_BallLock
+    :members:
+    :undoc-members:
+    :show-inheritance:

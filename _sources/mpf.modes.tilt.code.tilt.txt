@@ -1,0 +1,7 @@
+mpf.modes.tilt.code.tilt module
+===============================
+
+.. automodule:: mpf.modes.tilt.code.tilt
+    :members:
+    :undoc-members:
+    :show-inheritance:

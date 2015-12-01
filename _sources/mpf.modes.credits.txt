@@ -1,0 +1,17 @@
+mpf.modes.credits package
+=========================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    mpf.modes.credits.code
+
+Module contents
+---------------
+
+.. automodule:: mpf.modes.credits
+    :members:
+    :undoc-members:
+    :show-inheritance:

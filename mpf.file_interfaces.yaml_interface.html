@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.file_interfaces.yaml_interface module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.file_interfaces package" href="mpf.file_interfaces.html" />
+    <link rel="next" title="mpf.media_controller package" href="mpf.media_controller.html" />
+    <link rel="prev" title="mpf.file_interfaces.xml_interface module" href="mpf.file_interfaces.xml_interface.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.html" title="mpf.media_controller package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.file_interfaces.xml_interface.html" title="mpf.file_interfaces.xml_interface module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.file_interfaces.html" accesskey="U">mpf.file_interfaces package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.file_interfaces.yaml_interface">
+<span id="mpf-file-interfaces-yaml-interface-module"></span><h1>mpf.file_interfaces.yaml_interface module</h1>
+<p>Contains the YamlInterface class for reading &amp; writing YAML files</p>
+<dl class="class">
+<dt id="mpf.file_interfaces.yaml_interface.YamlInterface">
+<em class="property">class </em><tt class="descclassname">mpf.file_interfaces.yaml_interface.</tt><tt class="descname">YamlInterface</tt></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.system.file_manager.html#mpf.system.file_manager.FileInterface" title="mpf.system.file_manager.FileInterface"><tt class="xref py py-class docutils literal"><span class="pre">mpf.system.file_manager.FileInterface</span></tt></a></p>
+<dl class="attribute">
+<dt id="mpf.file_interfaces.yaml_interface.YamlInterface.file_types">
+<tt class="descname">file_types</tt><em class="property"> = ['.yaml', '.yml']</em></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.file_interfaces.yaml_interface.YamlInterface.get_config_file_version">
+<em class="property">static </em><tt class="descname">get_config_file_version</tt><big>(</big><em>filename</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.file_interfaces.yaml_interface.YamlInterface.load">
+<tt class="descname">load</tt><big>(</big><em>filename</em>, <em>verify_version=True</em>, <em>halt_on_error=False</em><big>)</big></dt>
+<dd><p>Loads a YAML file from disk.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> &#8211; The file to load.</li>
+<li><strong>verify_version</strong> &#8211; Boolean which specifies whether this method should
+verify whether this file&#8217;s config_version is compatible with
+this version of MPF. Default is True.</li>
+<li><strong>halt_on_error</strong> &#8211; Boolean which controls what happens if the file
+can&#8217;t be loaded. (Not found, invalid format, etc. If True, MPF
+will raise an error and exit. If False, an empty config
+dictionary will be returned.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dictionary of the settings from this YAML file.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.file_interfaces.yaml_interface.YamlInterface.save">
+<tt class="descname">save</tt><big>(</big><em>filename</em>, <em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.file_interfaces.yaml_interface.file_interface_class">
+<tt class="descclassname">mpf.file_interfaces.yaml_interface.</tt><tt class="descname">file_interface_class</tt></dt>
+<dd><p>alias of <a class="reference internal" href="#mpf.file_interfaces.yaml_interface.YamlInterface" title="mpf.file_interfaces.yaml_interface.YamlInterface"><tt class="xref py py-class docutils literal"><span class="pre">YamlInterface</span></tt></a></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.file_interfaces.xml_interface.html"
+                        title="previous chapter">mpf.file_interfaces.xml_interface module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.media_controller.html"
+                        title="next chapter">mpf.media_controller package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.file_interfaces.yaml_interface.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.media_controller.html" title="mpf.media_controller package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.file_interfaces.xml_interface.html" title="mpf.file_interfaces.xml_interface module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.file_interfaces.html" >mpf.file_interfaces package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

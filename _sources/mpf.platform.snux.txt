@@ -1,0 +1,7 @@
+mpf.platform.snux module
+========================
+
+.. automodule:: mpf.platform.snux
+    :members:
+    :undoc-members:
+    :show-inheritance:

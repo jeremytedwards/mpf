@@ -1,0 +1,7 @@
+mpf.system.utility_functions module
+===================================
+
+.. automodule:: mpf.system.utility_functions
+    :members:
+    :undoc-members:
+    :show-inheritance:

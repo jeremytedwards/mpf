@@ -1,0 +1,7 @@
+mpf.system.config_parser module
+===============================
+
+.. automodule:: mpf.system.config_parser
+    :members:
+    :undoc-members:
+    :show-inheritance:

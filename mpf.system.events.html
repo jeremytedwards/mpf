@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.events module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.events module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,9 +23,9 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
-    <link rel="next" title="mpf.system.light_controller module" href="mpf.system.light_controller.html" />
+    <link rel="next" title="mpf.system.file_manager module" href="mpf.system.file_manager.html" />
     <link rel="prev" title="mpf.system.device_manager module" href="mpf.system.device_manager.html" /> 
   </head>
   <body>
@@ -39,12 +39,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="mpf.system.light_controller.html" title="mpf.system.light_controller module"
+          <a href="mpf.system.file_manager.html" title="mpf.system.file_manager module"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="mpf.system.device_manager.html" title="mpf.system.device_manager module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -239,8 +239,8 @@ called.</p>
 system is in the process of handling another event, this event is
 added to a queue and processed after the current event is done.</p>
 <p>You can control the order the handlers will be called by optionally
-specifying a priority when the handlers were registed. (Higher priority
-values will be processed first.)</p>
+specifying a priority when the handlers were registered. (Higher
+numeric values will be processed first.)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -435,30 +435,42 @@ before replacing the existing entry.</p>
 <dt id="mpf.system.events.QueuedEvent">
 <em class="property">class </em><tt class="descclassname">mpf.system.events.</tt><tt class="descname">QueuedEvent</tt><big>(</big><em>callback</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
-<p>The base class for an event queue which is created each time a queue
+<p>Base class for an event queue which is created each time a queue
 event is called.</p>
-<p>See the documentation at
-<a class="reference external" href="http://missionpinball.com/docs/system-components/events/">http://missionpinball.com/docs/system-components/events/</a>
-for a description of how queue events work.</p>
 <dl class="method">
 <dt id="mpf.system.events.QueuedEvent.clear">
 <tt class="descname">clear</tt><big>(</big><big>)</big></dt>
-<dd></dd></dl>
+<dd><p>Clears a wait. If the number of waits drops to 0, the callbacks will
+be called.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.events.QueuedEvent.is_empty">
 <tt class="descname">is_empty</tt><big>(</big><big>)</big></dt>
-<dd></dd></dl>
+<dd><p>Checks to see if this QueuedEvent has any waits.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True is there are 1 or more waits, False if there are no more
+waits.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.events.QueuedEvent.kill">
 <tt class="descname">kill</tt><big>(</big><big>)</big></dt>
-<dd></dd></dl>
+<dd><p>Kills this QueuedEvent by removing all waits. Does not process the
+callback.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.events.QueuedEvent.wait">
 <tt class="descname">wait</tt><big>(</big><big>)</big></dt>
-<dd></dd></dl>
+<dd><p>Registers a wait for this QueueEvent.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -474,8 +486,8 @@ for a description of how queue events work.</p>
   <p class="topless"><a href="mpf.system.device_manager.html"
                         title="previous chapter">mpf.system.device_manager module</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="mpf.system.light_controller.html"
-                        title="next chapter">mpf.system.light_controller module</a></p>
+  <p class="topless"><a href="mpf.system.file_manager.html"
+                        title="next chapter">mpf.system.file_manager module</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/mpf.system.events.txt"
@@ -508,12 +520,12 @@ for a description of how queue events work.</p>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="mpf.system.light_controller.html" title="mpf.system.light_controller module"
+          <a href="mpf.system.file_manager.html" title="mpf.system.file_manager module"
              >next</a> |</li>
         <li class="right" >
           <a href="mpf.system.device_manager.html" title="mpf.system.device_manager module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.media_controller.core.slide_builder module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.media_controller.core.slide_builder module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.media_controller.core package" href="mpf.media_controller.core.html" />
     <link rel="next" title="mpf.media_controller.core.sound module" href="mpf.media_controller.core.sound.html" />
     <link rel="prev" title="mpf.media_controller.core.slide module" href="mpf.media_controller.core.slide.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.media_controller.core.slide.html" title="mpf.media_controller.core.slide module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
           <li><a href="mpf.media_controller.core.html" accesskey="U">mpf.media_controller.core package</a> &raquo;</li> 
@@ -78,7 +78,7 @@ available here, including positioning, fonts, size, delays, etc.</p>
 </table>
 <dl class="method">
 <dt id="mpf.media_controller.core.slide_builder.SlideBuilder.build_slide">
-<tt class="descname">build_slide</tt><big>(</big><em>settings</em>, <em>display=None</em>, <em>slide_name=None</em>, <em>priority=None</em>, <em>mode=None</em>, <em>**kwargs</em><big>)</big></dt>
+<tt class="descname">build_slide</tt><big>(</big><em>settings</em>, <em>display=None</em>, <em>priority=None</em>, <em>mode=None</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Builds a slide from a SlideBuilder set of keyword arguments.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -89,10 +89,6 @@ available here, including positioning, fonts, size, delays, etc.</p>
 includes settings for the various Display Elements as well as
 any transition.</li>
 <li><strong>display</strong> &#8211; String name of the display this slide is being built for.</li>
-<li><strong>slide_name</strong> &#8211; String name of the slide that&#8217;s being built. If this
-slide exists, the elements here will be added to that slide. If
-it doesn&#8217;t exist, a new slide will be created. If no slide name
-is passed, a new slide will be created and given a UUID4 name.</li>
 <li><strong>priority</strong> &#8211; Integer of the priority of this slide.</li>
 <li><strong>mode</strong> &#8211; A reference to the Mode instance that built this slide. Used
 to make sure that each mode keeps at least one active slide.</li>
@@ -146,7 +142,7 @@ with the preprocessed=True flag.</p>
 
 <dl class="method">
 <dt id="mpf.media_controller.core.slide_builder.SlideBuilder.unload_slide_events">
-<tt class="descname">unload_slide_events</tt><big>(</big><em>removal_tuple</em><big>)</big></dt>
+<tt class="descname">unload_slide_events</tt><big>(</big><em>key_list</em><big>)</big></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -202,7 +198,7 @@ with the preprocessed=True flag.</p>
         <li class="right" >
           <a href="mpf.media_controller.core.slide.html" title="mpf.media_controller.core.slide module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.media_controller.html" >mpf.media_controller package</a> &raquo;</li>
           <li><a href="mpf.media_controller.core.html" >mpf.media_controller.core package</a> &raquo;</li> 

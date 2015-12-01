@@ -1,0 +1,7 @@
+tests.test_TooLongExitCountDelay module
+=======================================
+
+.. automodule:: tests.test_TooLongExitCountDelay
+    :members:
+    :undoc-members:
+    :show-inheritance:

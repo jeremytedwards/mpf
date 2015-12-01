@@ -1,0 +1,7 @@
+tests.test_BallDeviceRouting module
+===================================
+
+.. automodule:: tests.test_BallDeviceRouting
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.platform.smart_virtual module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.platform package" href="mpf.platform.html" />
+    <link rel="next" title="mpf.platform.smartmatrix module" href="mpf.platform.smartmatrix.html" />
+    <link rel="prev" title="mpf.platform.p_roc module" href="mpf.platform.p_roc.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.smartmatrix.html" title="mpf.platform.smartmatrix module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.p_roc.html" title="mpf.platform.p_roc module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.platform.html" accesskey="U">mpf.platform package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.platform.smart_virtual">
+<span id="mpf-platform-smart-virtual-module"></span><h1>mpf.platform.smart_virtual module</h1>
+<p>Contains code for the smart_virtual platform.</p>
+<dl class="class">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform">
+<em class="property">class </em><tt class="descclassname">mpf.platform.smart_virtual.</tt><tt class="descname">HardwarePlatform</tt><big>(</big><em>machine</em><big>)</big></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.platform.virtual.html#mpf.platform.virtual.HardwarePlatform" title="mpf.platform.virtual.HardwarePlatform"><tt class="xref py py-class docutils literal"><span class="pre">mpf.platform.virtual.HardwarePlatform</span></tt></a></p>
+<p>Base class for the smart_virtual hardware platform.</p>
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.add_ball_to_device">
+<tt class="descname">add_ball_to_device</tt><big>(</big><em>device</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.clear_hw_rule">
+<tt class="descname">clear_hw_rule</tt><big>(</big><em>sw_name</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.configure_driver">
+<tt class="descname">configure_driver</tt><big>(</big><em>config</em>, <em>device_type='coil'</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.initialize">
+<tt class="descname">initialize</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.tick">
+<tt class="descname">tick</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.HardwarePlatform.write_hw_rule">
+<tt class="descname">write_hw_rule</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver">
+<em class="property">class </em><tt class="descclassname">mpf.platform.smart_virtual.</tt><tt class="descname">SmartVirtualDriver</tt><big>(</big><em>number</em>, <em>machine</em>, <em>platform</em><big>)</big></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.platform.virtual.html#mpf.platform.virtual.VirtualDriver" title="mpf.platform.virtual.VirtualDriver"><tt class="xref py py-class docutils literal"><span class="pre">mpf.platform.virtual.VirtualDriver</span></tt></a></p>
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver.disable">
+<tt class="descname">disable</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver.enable">
+<tt class="descname">enable</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver.pulse">
+<tt class="descname">pulse</tt><big>(</big><em>milliseconds=None</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver.register_ball_switches">
+<tt class="descname">register_ball_switches</tt><big>(</big><em>switches</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.smart_virtual.SmartVirtualDriver.set_target_device">
+<tt class="descname">set_target_device</tt><big>(</big><em>target</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.platform.p_roc.html"
+                        title="previous chapter">mpf.platform.p_roc module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.platform.smartmatrix.html"
+                        title="next chapter">mpf.platform.smartmatrix module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.platform.smart_virtual.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.smartmatrix.html" title="mpf.platform.smartmatrix module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.platform.p_roc.html" title="mpf.platform.p_roc module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.platform.html" >mpf.platform package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

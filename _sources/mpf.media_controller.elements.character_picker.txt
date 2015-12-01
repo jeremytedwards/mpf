@@ -1,0 +1,7 @@
+mpf.media_controller.elements.character_picker module
+=====================================================
+
+.. automodule:: mpf.media_controller.elements.character_picker
+    :members:
+    :undoc-members:
+    :show-inheritance:

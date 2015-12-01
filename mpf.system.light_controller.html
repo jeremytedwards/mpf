@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.light_controller module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.light_controller module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,10 +23,10 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.logic_blocks module" href="mpf.system.logic_blocks.html" />
-    <link rel="prev" title="mpf.system.events module" href="mpf.system.events.html" /> 
+    <link rel="prev" title="mpf.system.file_manager module" href="mpf.system.file_manager.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,9 +42,9 @@
           <a href="mpf.system.logic_blocks.html" title="mpf.system.logic_blocks module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="mpf.system.events.html" title="mpf.system.events module"
+          <a href="mpf.system.file_manager.html" title="mpf.system.file_manager module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -58,6 +58,37 @@
   <div class="section" id="module-mpf.system.light_controller">
 <span id="mpf-system-light-controller-module"></span><h1>mpf.system.light_controller module</h1>
 <p>Manages the light shows in a pinball machine.</p>
+<dl class="class">
+<dt id="mpf.system.light_controller.ExternalShow">
+<em class="property">class </em><tt class="descclassname">mpf.system.light_controller.</tt><tt class="descname">ExternalShow</tt><big>(</big><em>machine</em>, <em>name</em>, <em>priority=0</em>, <em>blend=True</em>, <em>leds=None</em>, <em>lights=None</em>, <em>flashers=None</em>, <em>gis=None</em><big>)</big></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="method">
+<dt id="mpf.system.light_controller.ExternalShow.stop">
+<tt class="descname">stop</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.ExternalShow.update_flashers">
+<tt class="descname">update_flashers</tt><big>(</big><em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.ExternalShow.update_gis">
+<tt class="descname">update_gis</tt><big>(</big><em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.ExternalShow.update_leds">
+<tt class="descname">update_leds</tt><big>(</big><em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.ExternalShow.update_lights">
+<tt class="descname">update_lights</tt><big>(</big><em>data</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="class">
 <dt id="mpf.system.light_controller.LightController">
 <em class="property">class </em><tt class="descclassname">mpf.system.light_controller.</tt><tt class="descname">LightController</tt><big>(</big><em>machine</em><big>)</big></dt>
@@ -74,6 +105,71 @@ Shows, etc. There should be only one per machine.</p>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="mpf.system.light_controller.LightController.add_external_show_frame_command_to_queue">
+<tt class="descname">add_external_show_frame_command_to_queue</tt><big>(</big><em>name</em>, <em>led_data=None</em>, <em>light_data=None</em>, <em>flasher_data=None</em>, <em>gi_data=None</em><big>)</big></dt>
+<dd><p>Called by BCP worker thread when an external show frame command is received
+via BCP.  Adds the command to a thread-safe queue where it will be processed
+by the main thread.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; The name of the external show.</li>
+<li><strong>led_data</strong> &#8211; A string of concatenated hex color values for the leds in the show.</li>
+<li><strong>light_data</strong> &#8211; A string of concatenated hex brightness values for the lights in the show.</li>
+<li><strong>flasher_data</strong> &#8211; A string of concatenated pulse time (ms) values for the flashers in the show.</li>
+<li><strong>gi_data</strong> &#8211; A string of concatenated hex brightness values for the GI in the show.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.LightController.add_external_show_start_command_to_queue">
+<tt class="descname">add_external_show_start_command_to_queue</tt><big>(</big><em>name</em>, <em>priority=0</em>, <em>blend=True</em>, <em>leds=None</em>, <em>lights=None</em>, <em>flashers=None</em>, <em>gis=None</em><big>)</big></dt>
+<dd><p>Called by BCP worker thread when an external show start command is received
+via BCP.  Adds the command to a thread-safe queue where it will be processed
+by the main thread.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; The name of the external show, used as a key for subsequent show commands.</li>
+<li><strong>priority</strong> &#8211; Integer value of the relative priority of this show.</li>
+<li><strong>blend</strong> &#8211; When an light is off in this show, should it allow lower
+priority lights to show through?</li>
+<li><strong>leds</strong> &#8211; A list of led device names that will be used in this show.</li>
+<li><strong>lights</strong> &#8211; A list of light device names that will be used in this show.</li>
+<li><strong>flashers</strong> &#8211; A list of flasher device names that will be used in this show.</li>
+<li><strong>gis</strong> &#8211; A list of GI device names that will be used in this show.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.LightController.add_external_show_stop_command_to_queue">
+<tt class="descname">add_external_show_stop_command_to_queue</tt><big>(</big><em>name</em><big>)</big></dt>
+<dd><p>Called by BCP worker thread when an external show stop command is received
+via BCP.  Adds the command to a thread-safe queue where it will be processed
+by the main thread.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; The name of the external show.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="mpf.system.light_controller.LightController.add_light_player_show">
 <tt class="descname">add_light_player_show</tt><big>(</big><em>event</em>, <em>settings</em><big>)</big></dt>
@@ -113,6 +209,19 @@ created by this list later.</li>
 &#8220;current_time&#8221; of a single update cycle is the same everywhere. This
 ensures that multiple shows, scripts, and commands start in-sync
 regardless of any processing lag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.LightController.deregister_tick_handler">
+<tt class="descname">deregister_tick_handler</tt><big>(</big><em>handler</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.light_controller.LightController.external_show_command_queue">
+<tt class="descname">external_show_command_queue</tt><em class="property"> = None</em></dt>
+<dd><p>A thread-safe queue that receives BCP external show commands in the BCP worker
+thread. The light controller reads and proecesses these commands in the main
+thread via a tick handler.</p>
 </dd></dl>
 
 <dl class="method">
@@ -164,6 +273,11 @@ future, including: (ot all are always used)</p>
 </ul>
 </div></blockquote>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.light_controller.LightController.register_tick_handler">
+<tt class="descname">register_tick_handler</tt><big>(</big><em>handler</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.light_controller.LightController.restore_lower_lights">
@@ -302,6 +416,14 @@ created by this script, call it like this:</p>
 tocks_per_sec=2)</dd>
 </dl>
 </div></blockquote>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.light_controller.LightController.running_external_show_keys">
+<tt class="descname">running_external_show_keys</tt><em class="property"> = None</em></dt>
+<dd><p>Dict of active external light shows that were created via BCP commands. This is
+useful for stopping shows later. Keys are based on the &#8216;name&#8217; parameter specified
+when an external show was started, values are references to the external show object.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -702,8 +824,8 @@ hold or not with True or False here.</li>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="mpf.system.events.html"
-                        title="previous chapter">mpf.system.events module</a></p>
+  <p class="topless"><a href="mpf.system.file_manager.html"
+                        title="previous chapter">mpf.system.file_manager module</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="mpf.system.logic_blocks.html"
                         title="next chapter">mpf.system.logic_blocks module</a></p>
@@ -742,9 +864,9 @@ hold or not with True or False here.</li>
           <a href="mpf.system.logic_blocks.html" title="mpf.system.logic_blocks module"
              >next</a> |</li>
         <li class="right" >
-          <a href="mpf.system.events.html" title="mpf.system.events module"
+          <a href="mpf.system.file_manager.html" title="mpf.system.file_manager module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

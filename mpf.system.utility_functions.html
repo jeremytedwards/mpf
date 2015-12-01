@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.system.utility_functions module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.system package" href="mpf.system.html" />
+    <link rel="prev" title="mpf.system.timing module" href="mpf.system.timing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.timing.html" title="mpf.system.timing module"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.system.utility_functions">
+<span id="mpf-system-utility-functions-module"></span><h1>mpf.system.utility_functions module</h1>
+<p>Contains the Util class which includes many utility functions</p>
+<dl class="class">
+<dt id="mpf.system.utility_functions.Util">
+<em class="property">class </em><tt class="descclassname">mpf.system.utility_functions.</tt><tt class="descname">Util</tt></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.bin_str_to_hex_str">
+<em class="property">static </em><tt class="descname">bin_str_to_hex_str</tt><big>(</big><em>source_int_str</em>, <em>num_chars</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.chunker">
+<em class="property">static </em><tt class="descname">chunker</tt><big>(</big><em>l</em>, <em>n</em><big>)</big></dt>
+<dd><p>Yields successive n-sized chunks from l.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.dict_merge">
+<em class="property">static </em><tt class="descname">dict_merge</tt><big>(</big><em>a</em>, <em>b</em>, <em>combine_lists=True</em><big>)</big></dt>
+<dd><p>Recursively merges dictionaries.</p>
+<p>Used to merge dictionaries of dictionaries, like when we&#8217;re merging
+together the machine configuration files. This method is called
+recursively as it finds sub-dictionaries.</p>
+<p>For example, in the traditional python dictionary
+update() methods, if a dictionary key exists in the original and
+merging-in dictionary, the new value will overwrite the old value.</p>
+<p>Consider the following example:</p>
+<p>Original dictionary:
+<cite>config[&#8216;foo&#8217;][&#8216;bar&#8217;] = 1</cite></p>
+<p>New dictionary we&#8217;re merging in:
+<cite>config[&#8216;foo&#8217;][&#8216;other_bar&#8217;] = 2</cite></p>
+<p>Default python dictionary update() method would have the updated
+dictionary as this:</p>
+<p><cite>{&#8216;foo&#8217;: {&#8216;other_bar&#8217;: 2}}</cite></p>
+<p>This happens because the original dictionary which had the single key
+<cite>bar</cite> was overwritten by a new dictionary which has a single key
+<cite>other_bar</cite>.)</p>
+<p>But really we want this:</p>
+<p><cite>{&#8216;foo&#8217;: {&#8216;bar&#8217;: 1, &#8216;other_bar&#8217;: 2}}</cite></p>
+<p>This code was based on this:
+<a class="reference external" href="https://www.xormedia.com/recursively-merge-dictionaries-in-python/">https://www.xormedia.com/recursively-merge-dictionaries-in-python/</a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<em>dict</em>) &#8211; The first dictionary</li>
+<li><strong>b</strong> (<em>dict</em>) &#8211; The second dictionary</li>
+<li><strong>combine_lists</strong> (<em>bool</em>) &#8211; Controls whether lists should be combined (extended) or
+overwritten. Default is <cite>True</cite> which combines them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The merged dictionaries.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.event_config_to_dict">
+<em class="property">static </em><tt class="descname">event_config_to_dict</tt><big>(</big><em>config</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.hex_string_to_int">
+<em class="property">static </em><tt class="descname">hex_string_to_int</tt><big>(</big><em>inputstring</em>, <em>maxvalue=255</em><big>)</big></dt>
+<dd><p>Takes a string input of hex numbers and an integer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_string</strong> &#8211; A string of incoming hex colors, like ffff00.</li>
+<li><strong>maxvalue</strong> &#8211; Integer of the max value you&#8217;d like to return. Default is
+255. (This is the real value of why this method exists.)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Integer representation of the hex string.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.hex_string_to_list">
+<em class="property">static </em><tt class="descname">hex_string_to_list</tt><big>(</big><em>input_string</em>, <em>output_length=3</em><big>)</big></dt>
+<dd><p>Takes a string input of hex numbers and returns a list of integers.</p>
+<p>This always groups the hex string in twos, so an input of ffff00 will
+be returned as [255, 255, 0]</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>input_string</strong> &#8211; A string of incoming hex colors, like ffff00.</li>
+<li><strong>output_length</strong> &#8211; Integer value of the number of items you&#8217;d like in
+your returned list. Default is 3. This method will ignore
+extra characters if the input_string is too long, and it will
+pad with zeros if the input string is too short.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">List of integers, like [255, 255, 0]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.int_to_hex_string">
+<em class="property">static </em><tt class="descname">int_to_hex_string</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd><p>Converts an int from 0-255 to a one-byte (2 chars) hex string, with
+uppercase characters.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.keys_to_lower">
+<em class="property">static </em><tt class="descname">keys_to_lower</tt><big>(</big><em>source_dict</em><big>)</big></dt>
+<dd><p>Converts the keys of a dictionary to lowercase.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source_dict</strong> &#8211; The dictionary you want to convert.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary with lowercase keys.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.list_of_lists">
+<em class="property">static </em><tt class="descname">list_of_lists</tt><big>(</big><em>incoming_string</em><big>)</big></dt>
+<dd><p>Converts an incoming string or list into a list of lists.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.normalize_hex_string">
+<em class="property">static </em><tt class="descname">normalize_hex_string</tt><big>(</big><em>source_hex</em>, <em>num_chars=2</em><big>)</big></dt>
+<dd><p>Takes an incoming hex value and converts it to uppercase and fills in
+leading zeros.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>source_hex</strong> &#8211; Incoming source number. Can be any format.</li>
+<li><strong>num_chars</strong> &#8211; Total number of characters that will be returned. Default
+is two.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns: String, uppercase, zero padded to the num_chars.</p>
+<p>Example usage: Send &#8220;c&#8221; as source_hex, returns &#8220;0C&#8221;.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.pwm32_to_hex_string">
+<em class="property">static </em><tt class="descname">pwm32_to_hex_string</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.pwm32_to_int">
+<em class="property">static </em><tt class="descname">pwm32_to_int</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.pwm8_to_hex_string">
+<em class="property">static </em><tt class="descname">pwm8_to_hex_string</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.pwm8_to_int">
+<em class="property">static </em><tt class="descname">pwm8_to_int</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.pwm8_to_on_off">
+<em class="property">static </em><tt class="descname">pwm8_to_on_off</tt><big>(</big><em>source_int</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.string_to_list">
+<em class="property">static </em><tt class="descname">string_to_list</tt><big>(</big><em>string</em><big>)</big></dt>
+<dd><p>Converts a comma-separated and/or space-separated string into a
+Python list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> &#8211; The string you&#8217;d like to convert.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A python list object containing whatever was between commas and/or
+spaces in the string.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="mpf.system.utility_functions.Util.string_to_lowercase_list">
+<em class="property">static </em><tt class="descname">string_to_lowercase_list</tt><big>(</big><em>string</em><big>)</big></dt>
+<dd><p>Converts a comma-separated and/or space-separated string into a
+Python list where each item in the list has been converted to lowercase.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> &#8211; The string you&#8217;d like to convert.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A python list object containing whatever was between commas and/or
+spaces in the string, with each item converted to lowercase.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.system.timing.html"
+                        title="previous chapter">mpf.system.timing module</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.system.utility_functions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.system.timing.html" title="mpf.system.timing module"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

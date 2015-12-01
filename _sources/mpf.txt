@@ -7,6 +7,7 @@ Subpackages
 .. toctree::
 
     mpf.devices
+    mpf.file_interfaces
     mpf.media_controller
     mpf.modes
     mpf.platform

@@ -1,0 +1,7 @@
+mpf.modes.high_score.code.high_score module
+===========================================
+
+.. automodule:: mpf.modes.high_score.code.high_score
+    :members:
+    :undoc-members:
+    :show-inheritance:

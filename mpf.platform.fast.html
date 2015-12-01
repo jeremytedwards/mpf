@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.platform.fast module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.platform.fast module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.platform package" href="mpf.platform.html" />
     <link rel="next" title="mpf.platform.openpixel module" href="mpf.platform.openpixel.html" />
     <link rel="prev" title="mpf.platform.fadecandy module" href="mpf.platform.fadecandy.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.platform.fadecandy.html" title="mpf.platform.fadecandy module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.platform.html" accesskey="U">mpf.platform package</a> &raquo;</li> 
       </ul>
@@ -129,9 +129,19 @@ turns all elements off.</p>
 
 <dl class="class">
 <dt id="mpf.platform.fast.FASTDriver">
-<em class="property">class </em><tt class="descclassname">mpf.platform.fast.</tt><tt class="descname">FASTDriver</tt><big>(</big><em>config</em>, <em>sender</em><big>)</big></dt>
+<em class="property">class </em><tt class="descclassname">mpf.platform.fast.</tt><tt class="descname">FASTDriver</tt><big>(</big><em>config</em>, <em>sender</em>, <em>machine</em><big>)</big></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <p>Base class for drivers connected to a FAST Controller.</p>
+<dl class="method">
+<dt id="mpf.platform.fast.FASTDriver.check_auto">
+<tt class="descname">check_auto</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.fast.FASTDriver.create_driver_settings">
+<tt class="descname">create_driver_settings</tt><big>(</big><em>machine</em>, <em>pulse_ms=None</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="mpf.platform.fast.FASTDriver.disable">
 <tt class="descname">disable</tt><big>(</big><big>)</big></dt>
@@ -145,15 +155,19 @@ turns all elements off.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.platform.fast.FASTDriver.get_pulse_ms">
+<tt class="descname">get_pulse_ms</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.platform.fast.FASTDriver.merge_driver_settings">
+<tt class="descname">merge_driver_settings</tt><big>(</big><em>pulse_ms=None</em>, <em>pwm_on_ms=None</em>, <em>pwm_off_ms=None</em>, <em>pulse_power=None</em>, <em>hold_power=None</em>, <em>pulse_power32=None</em>, <em>hold_power32=None</em>, <em>pulse_pwm_mask=None</em>, <em>hold_pwm_mask=None</em>, <em>recycle_ms=None</em>, <em>activation_time=None</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.platform.fast.FASTDriver.pulse">
 <tt class="descname">pulse</tt><big>(</big><em>milliseconds=None</em><big>)</big></dt>
 <dd><p>Pulses this driver.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="mpf.platform.fast.FASTDriver.pwm">
-<tt class="descname">pwm</tt><big>(</big><em>on_ms=10</em>, <em>off_ms=10</em>, <em>original_on_ms=0</em>, <em>now=True</em><big>)</big></dt>
-<dd><p>Enables this driver in a pwm pattern.</p>
 </dd></dl>
 
 </dd></dl>
@@ -390,7 +404,7 @@ update every loop, it will only be the wrong color for one tick.</p>
 
 <dl class="method">
 <dt id="mpf.platform.fast.HardwarePlatform.write_hw_rule">
-<tt class="descname">write_hw_rule</tt><big>(</big><em>sw</em>, <em>sw_activity</em>, <em>coil_action_ms</em>, <em>coil=None</em>, <em>pulse_ms=0</em>, <em>pwm_on=8</em>, <em>pwm_off=8</em>, <em>delay=0</em>, <em>recycle_time=0</em>, <em>debounced=True</em>, <em>drive_now=False</em><big>)</big></dt>
+<tt class="descname">write_hw_rule</tt><big>(</big><em>switch_obj</em>, <em>sw_activity</em>, <em>driver_obj</em>, <em>driver_action</em>, <em>disable_on_release=True</em>, <em>drive_now=False</em>, <em>**driver_settings_overrides</em><big>)</big></dt>
 <dd><p>Used to write (or update) a hardware rule to the FAST controller.</p>
 <p><em>Hardware Rules</em> are used to configure the hardware controller to
 automatically change driver states based on switch changes. These rules
@@ -405,29 +419,15 @@ remove them.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>sw</strong> &#8211; Which switch you&#8217;re creating this rule for. The parameter is a
-reference to the switch object itsef.</li>
+<li><strong>switch_obj</strong> &#8211; Which switch you&#8217;re creating this rule for. The
+parameter is a reference to the switch object itself.</li>
 <li><strong>sw_activity</strong> &#8211; Int which specifies whether this coil should fire when
 the switch becomes active (1) or inactive (0)</li>
-<li><strong>coil_action_ms</strong> &#8211; Int of the total time (in ms) that this coil action
-should take place. A value of -1 means it&#8217;s forever. A value of
-0 means the coil disables itself when this switch goes into the
-state specified.</li>
-<li><strong>coil</strong> &#8211; The coil object this rule is for.</li>
-<li><strong>pulse_ms</strong> &#8211; How long should the coil be pulsed (ms)</li>
-<li><strong>pwm_on</strong> &#8211; Integer 0 (off) through 8 (100% on) for the initial pwm
-power of this coil</li>
-<li><strong>pwm_off</strong> &#8211; pwm level 0-8 of the power of this coil during the hold
-phase (after the initial kick).</li>
-<li><strong>delay</strong> &#8211; Not currently implemented</li>
-<li><strong>recycle_time</strong> &#8211; How long (in ms) should this switch rule wait before
-firing again. Put another way, what&#8217;s the &#8220;fastest&#8221; this rule
-can fire? This is used to prevent &#8220;machine gunning&#8221; of
-slingshots and pop bumpers. Do not use it with flippers.</li>
-<li><strong>debounced</strong> &#8211; Should the hardware fire this coil after the switch has
-been debounced?</li>
+<li><strong>driver_obj</strong> &#8211; Driver object this rule is being set for.</li>
+<li><strong>driver_action</strong> &#8211; String &#8216;pulse&#8217; or &#8216;hold&#8217; which describe what action
+will be applied to this driver</li>
 <li><strong>drive_now</strong> &#8211; Should the hardware check the state of the switches when
-this rule is firts applied, and fire the coils if they should
+this rule is first applied, and fire the coils if they should
 be? Typically this is True, especially with flippers because you
 want them to fire if the player is holding in the buttons when
 the machine enables the flippers (which is done via several
@@ -533,7 +533,7 @@ be added automatically.</td>
         <li class="right" >
           <a href="mpf.platform.fadecandy.html" title="mpf.platform.fadecandy module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.platform.html" >mpf.platform package</a> &raquo;</li> 
       </ul>

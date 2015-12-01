@@ -1,0 +1,7 @@
+tests.test_BallDeviceManualWithTarget module
+============================================
+
+.. automodule:: tests.test_BallDeviceManualWithTarget
+    :members:
+    :undoc-members:
+    :show-inheritance:

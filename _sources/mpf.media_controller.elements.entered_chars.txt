@@ -1,0 +1,7 @@
+mpf.media_controller.elements.entered_chars module
+==================================================
+
+.. automodule:: mpf.media_controller.elements.entered_chars
+    :members:
+    :undoc-members:
+    :show-inheritance:

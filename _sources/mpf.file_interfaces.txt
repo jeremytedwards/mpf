@@ -1,0 +1,19 @@
+mpf.file_interfaces package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+
+   mpf.file_interfaces.json_interface
+   mpf.file_interfaces.xml_interface
+   mpf.file_interfaces.yaml_interface
+
+Module contents
+---------------
+
+.. automodule:: mpf.file_interfaces
+    :members:
+    :undoc-members:
+    :show-inheritance:

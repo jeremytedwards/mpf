@@ -1,0 +1,7 @@
+tests.MpfTestCase module
+========================
+
+.. automodule:: tests.MpfTestCase
+    :members:
+    :undoc-members:
+    :show-inheritance:

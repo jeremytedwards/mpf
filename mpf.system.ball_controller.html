@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.ball_controller module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.ball_controller module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.bcp module" href="mpf.system.bcp.html" />
     <link rel="prev" title="mpf.system.assets module" href="mpf.system.assets.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.assets.html" title="mpf.system.assets module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -74,8 +74,8 @@ the balls in a pinball machine.</p>
 </tbody>
 </table>
 <dl class="method">
-<dt id="mpf.system.ball_controller.BallController.are_balls_gathered">
-<tt class="descname">are_balls_gathered</tt><big>(</big><em>target=['home', 'trough']</em><big>)</big></dt>
+<dt id="mpf.system.ball_controller.BallController.are_balls_collected">
+<tt class="descname">are_balls_collected</tt><big>(</big><em>target=None</em>, <em>antitarget=None</em><big>)</big></dt>
 <dd><p>Checks to see if all the balls are contained in devices tagged with
 the parameter that was passed.</p>
 <p>Note if you pass a target that&#8217;s not used in any ball devices, this
@@ -85,49 +85,32 @@ nowhere, and they always are. :)</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target</strong> &#8211; String value of the tag you&#8217;d like to check. Default is</li>
-<li><strong>&#8216;home&#8217;</strong> &#8211; </li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target</strong> &#8211; String or list of strings of the tags you&#8217;d like to
+collect the balls to. Default of None will be replaced with
+&#8216;home&#8217; and &#8216;trough&#8217;.</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="mpf.system.ball_controller.BallController.balls">
-<tt class="descname">balls</tt></dt>
-<dd></dd></dl>
-
 <dl class="method">
-<dt id="mpf.system.ball_controller.BallController.gather_balls">
-<tt class="descname">gather_balls</tt><big>(</big><em>target='home'</em>, <em>antitarget=None</em><big>)</big></dt>
-<dd><p>Used to ensure that all balls are in (or not in) ball devices with
-the tag you pass.</p>
+<dt id="mpf.system.ball_controller.BallController.collect_balls">
+<tt class="descname">collect_balls</tt><big>(</big><em>target='home</em>, <em>trough'</em><big>)</big></dt>
+<dd><p>Used to ensure that all balls are in contained in ball devices with
+the tag or list of tags you pass.</p>
 <p>Typically this would be used after a game ends, or when the machine is
 reset or first starts up, to ensure that all balls are in devices
-tagged with &#8216;home&#8217;.</p>
+tagged with &#8216;home&#8217; and/or &#8216;trough&#8217;.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>target</strong> &#8211; A string of the tag name of the ball devices you want all
-the balls to end up in. Default is &#8216;home&#8217;.</li>
-<li><strong>antitarget</strong> &#8211; The opposite of target. Will eject all balls from
-all devices with the string you pass. Default is None.</li>
-</ul>
-</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>target</strong> &#8211; A string of the tag name or a list of tags names of the
+ball devices you want all the balls to end up in. Default is
+[&#8216;home&#8217;, &#8216;trough&#8217;].</td>
 </tr>
 </tbody>
 </table>
-<p>Note you can&#8217;t pass both a target and antitarget in the same call. (If
-you do it will just use the target and ignore the antitarget.)</p>
-<p>TODO: Add support to actually move balls into position. e.g. STTNG, the
-lock at the top of the playfield wants to hold a ball before a game
-starts, so when a game ends the machine will auto eject one from the
-plunger with the diverter set so it&#8217;s held in the rear lock.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -197,7 +180,7 @@ Balls&#8217; setting), it will return False to reject the game start request.</p
         <li class="right" >
           <a href="mpf.system.assets.html" title="mpf.system.assets module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

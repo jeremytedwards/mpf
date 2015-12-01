@@ -1,0 +1,7 @@
+mpf.media_controller.core.transition module
+===========================================
+
+.. automodule:: mpf.media_controller.core.transition
+    :members:
+    :undoc-members:
+    :show-inheritance:

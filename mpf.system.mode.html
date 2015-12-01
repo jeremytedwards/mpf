@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.mode module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.mode module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.mode_controller module" href="mpf.system.mode_controller.html" />
     <link rel="prev" title="mpf.system.machine module" href="mpf.system.machine.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.machine.html" title="mpf.system.machine module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -149,6 +149,14 @@ stops (i.e. whenever it becomes inactive).</p>
 <dt id="mpf.system.mode.Mode.player">
 <tt class="descname">player</tt><em class="property"> = None</em></dt>
 <dd><p>Reference to the current player object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.mode.Mode.restart_on_next_ball">
+<tt class="descname">restart_on_next_ball</tt><em class="property"> = None</em></dt>
+<dd><p>Controls whether this mode will restart on the next ball. This only
+works if the mode was running when the ball ended. It&#8217;s tracked per-
+player in the &#8216;_restart_modes_on_next_ball&#8217; untracked player variable.</p>
 </dd></dl>
 
 <dl class="method">
@@ -505,7 +513,7 @@ additional keyword arguments.</td>
         <li class="right" >
           <a href="mpf.system.machine.html" title="mpf.system.machine module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

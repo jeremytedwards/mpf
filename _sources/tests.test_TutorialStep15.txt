@@ -1,0 +1,7 @@
+tests.test_TutorialStep15 module
+================================
+
+.. automodule:: tests.test_TutorialStep15
+    :members:
+    :undoc-members:
+    :show-inheritance:

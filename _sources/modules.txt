@@ -7,4 +7,5 @@
    mc
    mpf
    mpf
+   tests
    version

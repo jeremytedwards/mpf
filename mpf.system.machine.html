@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.machine module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.machine module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.mode module" href="mpf.system.mode.html" />
     <link rel="prev" title="mpf.system.logic_blocks module" href="mpf.system.logic_blocks.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.logic_blocks.html" title="mpf.system.logic_blocks module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -57,7 +57,7 @@
             
   <div class="section" id="module-mpf.system.machine">
 <span id="mpf-system-machine-module"></span><h1>mpf.system.machine module</h1>
-<p>The main machine object for the Mission Pinball Framework.</p>
+<p>Contains the MachineController base class</p>
 <dl class="class">
 <dt id="mpf.system.machine.MachineController">
 <em class="property">class </em><tt class="descclassname">mpf.system.machine.</tt><tt class="descname">MachineController</tt><big>(</big><em>options</em><big>)</big></dt>
@@ -89,22 +89,9 @@ various sources.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="mpf.system.machine.MachineController.physical_hw">
-<tt class="descname">physical_hw</tt></dt>
-<dd><p>Boolean as to whether there is physical pinball controller
-hardware attached.</p>
-</dd></dl>
-
-<dl class="attribute">
 <dt id="mpf.system.machine.MachineController.done">
 <tt class="descname">done</tt></dt>
 <dd><p>Boolean. Set to True and MPF exits.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.system.machine.MachineController.machineflow_index">
-<tt class="descname">machineflow_index</tt></dt>
-<dd><p>What machineflow position the machine is currently in.</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -126,11 +113,6 @@ hardware attached.</p>
 <dl class="attribute">
 <dt id="mpf.system.machine.MachineController.scriptlets">
 <tt class="descname">scriptlets</tt></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.system.machine.MachineController.tilted">
-<tt class="descname">tilted</tt></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -160,9 +142,40 @@ extension).</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.machine.MachineController.bcp_reset_complete">
+<tt class="descname">bcp_reset_complete</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.machine.MachineController.configure_debugger">
 <tt class="descname">configure_debugger</tt><big>(</big><big>)</big></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.machine.MachineController.create_machine_var">
+<tt class="descname">create_machine_var</tt><big>(</big><em>name</em>, <em>value=0</em>, <em>persist=False</em>, <em>expire_secs=None</em>, <em>silent=False</em><big>)</big></dt>
+<dd><p>Creates a new machine variable:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String name of the variable.</li>
+<li><strong>value</strong> &#8211; The value of the variable. This can be any Type.</li>
+<li><strong>persist</strong> &#8211; Boolean as to whether this variable should be saved to
+disk so it&#8217;s available the next time MPF boots.</li>
+<li><strong>expire_secs</strong> &#8211; Optional number of seconds you&#8217;d like this variable
+to persist on disk for. When MPF boots, if the expiration time
+of the variable is in the past, it will be loaded with a value
+of 0. For example, this lets you write the number of credits on
+the machine to disk to persist even during power off, but you
+could set it so that those only stay persisted for an hour.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.machine.MachineController.get_debug_status">
@@ -170,17 +183,31 @@ extension).</td>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.system.machine.MachineController.log_loop_rate">
-<tt class="descname">log_loop_rate</tt><big>(</big><big>)</big></dt>
+<dt id="mpf.system.machine.MachineController.get_machine_var">
+<tt class="descname">get_machine_var</tt><big>(</big><em>name</em><big>)</big></dt>
+<dd><p>Returns the value of a machine variable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; String name of the variable you want to get that value for.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The value of the variable if it exists, or None if the variable
+does not exist.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.machine.MachineController.is_machine_var">
+<tt class="descname">is_machine_var</tt><big>(</big><em>name</em><big>)</big></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.system.machine.MachineController.log_system_info">
-<tt class="descname">log_system_info</tt><big>(</big><big>)</big></dt>
-<dd><p>Dumps information about the Python installation to the log.</p>
-<p>Information includes Python version, Python executable, platform, and
-system architecture.</p>
-</dd></dl>
+<dt id="mpf.system.machine.MachineController.log_loop_rate">
+<tt class="descname">log_loop_rate</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.machine.MachineController.power_off">
@@ -224,6 +251,41 @@ a central registry of monitors.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.machine.MachineController.remove_machine_var">
+<tt class="descname">remove_machine_var</tt><big>(</big><em>name</em><big>)</big></dt>
+<dd><p>Removes a machine variable by name. If this variable persists to
+disk, it will remove it from there too.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; String name of the variable you want to remove.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.machine.MachineController.remove_machine_var_search">
+<tt class="descname">remove_machine_var_search</tt><big>(</big><em>startswith=''</em>, <em>endswith=''</em><big>)</big></dt>
+<dd><p>Removes a machine variable by matching parts of its name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>startswith</strong> &#8211; Optional start of the variable name to match.</li>
+<li><strong>endswith</strong> &#8211; Optional end of the variable name to match.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For example, if you pass startswit=&#8217;player&#8217; and endswith=&#8217;score&#8217;, this
+method will match and remove player1_score, player2_score, etc.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.machine.MachineController.reset">
 <tt class="descname">reset</tt><big>(</big><big>)</big></dt>
 <dd><p>Resets the machine.</p>
@@ -256,6 +318,28 @@ controls whether a platform timer or MPF&#8217;s timer is used.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.system.machine.MachineController.set_machine_var">
+<tt class="descname">set_machine_var</tt><big>(</big><em>name</em>, <em>value</em>, <em>force_events=False</em><big>)</big></dt>
+<dd><p>Sets the value of a machine variable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String name of the variable you&#8217;re setting the value for.</li>
+<li><strong>value</strong> &#8211; The value you&#8217;re setting. This can be any Type.</li>
+<li><strong>force_events</strong> &#8211; Boolean which will force the event posting, the
+machine monitor callback, and writing the variable to disk (if
+it&#8217;s set to persist). By default these things only happen if
+the new value is different from the old value.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="mpf.system.machine.MachineController.string_to_class">
 <tt class="descname">string_to_class</tt><big>(</big><em>class_string</em><big>)</big></dt>
 <dd><p>Converts a string like mpf.system.events.EventManager into a python
@@ -282,6 +366,19 @@ does-python-have-an-equivalent-to-java-class-forname</p>
 <p>This method is called by the MPF run loop or the platform run loop,
 depending on the platform. (Some platforms drive the loop, and others
 let MPF drive.)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.machine.MachineController.validate_machine_config_section">
+<tt class="descname">validate_machine_config_section</tt><big>(</big><em>section</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.system.machine.MachineController.verify_system_info">
+<tt class="descname">verify_system_info</tt><big>(</big><big>)</big></dt>
+<dd><p>Dumps information about the Python installation to the log.</p>
+<p>Information includes Python version, Python executable, platform, and
+system architecture.</p>
 </dd></dl>
 
 </dd></dl>
@@ -337,7 +434,7 @@ let MPF drive.)</p>
         <li class="right" >
           <a href="mpf.system.logic_blocks.html" title="mpf.system.logic_blocks module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

@@ -18,6 +18,7 @@ Submodules
    mpf.media_controller.core.slide
    mpf.media_controller.core.slide_builder
    mpf.media_controller.core.sound
+   mpf.media_controller.core.transition
    mpf.media_controller.core.window
 
 Module contents

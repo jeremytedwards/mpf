@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.scoring module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.scoring module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.scriptlet module" href="mpf.system.scriptlet.html" />
     <link rel="prev" title="mpf.system.player module" href="mpf.system.player.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.player.html" title="mpf.system.player module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -65,87 +65,18 @@ tracking.</p>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
 <dl class="method">
 <dt id="mpf.system.scoring.ScoreController.add">
-<tt class="descname">add</tt><big>(</big><em>points</em>, <em>force=False</em><big>)</big></dt>
-<dd><p>Adds to the current player&#8217;s score.</p>
-<p>Use this method instead of changing the value of the player attribute
-directly because this method will post the scoring events that other
-modules use for effects and stuff.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> &#8211; Integer of points to add to the current player&#8217;s score.
-Note this value can also be negative to subtract points from
-their score.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="mpf.system.scoring.ScoreController.process_config">
-<tt class="descname">process_config</tt><big>(</big><em>config</em>, <em>mode=None</em>, <em>priority=0</em><big>)</big></dt>
+<tt class="descname">add</tt><big>(</big><em>value</em>, <em>var_name='score'</em>, <em>mode=None</em><big>)</big></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.system.scoring.ScoreController.register_score_event">
-<tt class="descname">register_score_event</tt><big>(</big><em>event_name</em>, <em>points</em>, <em>priority=0</em>, <em>block=False</em><big>)</big></dt>
-<dd><p>Used to register a score event which adds to a player&#8217;s score when
-a certain event is posted.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>event_name</strong> &#8211; The string name of the event that should cause a score
-change to take place.</li>
-<li><strong>points</strong> &#8211; The integer number of points that should be added or
-subtracted to the current player&#8217;s score when this event is
-posted.</li>
-<li><strong>priority</strong> &#8211; Integer priority which is used in conjunction with block.</li>
-<li><strong>block</strong> &#8211; Boolean which specifies whether this event should block lower
-priority events. If True, lower priority events will not score
-as long as this event is registered. If False then lower
-priority events will score as normal.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<dl class="docutils">
-<dt>Returns: A &#8220;key&#8221; which can be used to later unregister this event via</dt>
-<dd>the &#8216;unregister_score_event&#8217; method.</dd>
-</dl>
-</dd></dl>
+<dt id="mpf.system.scoring.ScoreController.mode_start">
+<tt class="descname">mode_start</tt><big>(</big><em>config</em>, <em>mode</em>, <em>priority</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.system.scoring.ScoreController.unload_score_events">
-<tt class="descname">unload_score_events</tt><big>(</big><em>key_list</em><big>)</big></dt>
-<dd><p>Unloads and removes several score events at once.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key_list</strong> &#8211; A list of keys of the score events you want to remove.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="mpf.system.scoring.ScoreController.unregister_score_event">
-<tt class="descname">unregister_score_event</tt><big>(</big><em>score_entry_key</em><big>)</big></dt>
-<dd><p>Removes a score event.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>score_entry_key</strong> &#8211; The key of the score event to remove. This is the
-key that&#8217;s returned by the &#8216;register_score_event()&#8217; method.</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dt id="mpf.system.scoring.ScoreController.mode_stop">
+<tt class="descname">mode_stop</tt><big>(</big><em>mode</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -200,7 +131,7 @@ key that&#8217;s returned by the &#8216;register_score_event()&#8217; method.</t
         <li class="right" >
           <a href="mpf.system.player.html" title="mpf.system.player module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

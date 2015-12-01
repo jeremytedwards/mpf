@@ -1,0 +1,7 @@
+mpf.file_interfaces.json_interface module
+=========================================
+
+.. automodule:: mpf.file_interfaces.json_interface
+    :members:
+    :undoc-members:
+    :show-inheritance:

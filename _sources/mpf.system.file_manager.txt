@@ -1,0 +1,7 @@
+mpf.system.file_manager module
+==============================
+
+.. automodule:: mpf.system.file_manager
+    :members:
+    :undoc-members:
+    :show-inheritance:

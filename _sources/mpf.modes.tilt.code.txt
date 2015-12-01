@@ -1,0 +1,17 @@
+mpf.modes.tilt.code package
+===========================
+
+Submodules
+----------
+
+.. toctree::
+
+   mpf.modes.tilt.code.tilt
+
+Module contents
+---------------
+
+.. automodule:: mpf.modes.tilt.code
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -1,0 +1,7 @@
+mpf.devices.driver_enabled module
+=================================
+
+.. automodule:: mpf.devices.driver_enabled
+    :members:
+    :undoc-members:
+    :show-inheritance:

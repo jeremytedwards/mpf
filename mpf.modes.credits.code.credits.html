@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>mpf.modes.credits.code.credits module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.21.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
+    <link rel="up" title="mpf.modes.credits.code package" href="mpf.modes.credits.code.html" />
+    <link rel="next" title="mpf.modes.game package" href="mpf.modes.game.html" />
+    <link rel="prev" title="mpf.modes.credits.code package" href="mpf.modes.credits.code.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.game.html" title="mpf.modes.game package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.credits.code.html" title="mpf.modes.credits.code package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.modes.html" >mpf.modes package</a> &raquo;</li>
+          <li><a href="mpf.modes.credits.html" >mpf.modes.credits package</a> &raquo;</li>
+          <li><a href="mpf.modes.credits.code.html" accesskey="U">mpf.modes.credits.code package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-mpf.modes.credits.code.credits">
+<span id="mpf-modes-credits-code-credits-module"></span><h1>mpf.modes.credits.code.credits module</h1>
+<p>Contains the Credit (coin play) mode code</p>
+<dl class="class">
+<dt id="mpf.modes.credits.code.credits.Credits">
+<em class="property">class </em><tt class="descclassname">mpf.modes.credits.code.credits.</tt><tt class="descname">Credits</tt><big>(</big><em>machine</em>, <em>config</em>, <em>name</em>, <em>path</em><big>)</big></dt>
+<dd><p>Bases: <a class="reference internal" href="mpf.system.mode.html#mpf.system.mode.Mode" title="mpf.system.mode.Mode"><tt class="xref py py-class docutils literal"><span class="pre">mpf.system.mode.Mode</span></tt></a></p>
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.add_credit">
+<tt class="descname">add_credit</tt><big>(</big><em>price_tiering=True</em><big>)</big></dt>
+<dd><p>Adds a single credit to the machine.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>price_tiering</strong> &#8211; Boolean which controls whether this credit will be
+eligible for the pricing tier bonuses. Default is True.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.clear_all_credits">
+<tt class="descname">clear_all_credits</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.enable_credit_play">
+<tt class="descname">enable_credit_play</tt><big>(</big><em>post_event=True</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.enable_free_play">
+<tt class="descname">enable_free_play</tt><big>(</big><em>post_event=True</em>, <em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.mode_init">
+<tt class="descname">mode_init</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.mode_start">
+<tt class="descname">mode_start</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.mode_stop">
+<tt class="descname">mode_stop</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.modes.credits.code.credits.Credits.toggle_credit_play">
+<tt class="descname">toggle_credit_play</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mpf.modes.credits.code.html"
+                        title="previous chapter">mpf.modes.credits.code package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mpf.modes.game.html"
+                        title="next chapter">mpf.modes.game package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/mpf.modes.credits.code.credits.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.game.html" title="mpf.modes.game package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mpf.modes.credits.code.html" title="mpf.modes.credits.code package"
+             >previous</a> |</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
+          <li><a href="mpf.html" >mpf package</a> &raquo;</li>
+          <li><a href="mpf.modes.html" >mpf.modes package</a> &raquo;</li>
+          <li><a href="mpf.modes.credits.html" >mpf.modes.credits package</a> &raquo;</li>
+          <li><a href="mpf.modes.credits.code.html" >mpf.modes.credits.code package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2015, Brian Madden, Gabe Knuth.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

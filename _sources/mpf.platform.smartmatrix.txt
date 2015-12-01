@@ -1,0 +1,7 @@
+mpf.platform.smartmatrix module
+===============================
+
+.. automodule:: mpf.platform.smartmatrix
+    :members:
+    :undoc-members:
+    :show-inheritance:

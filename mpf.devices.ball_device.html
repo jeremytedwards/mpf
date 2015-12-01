@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.devices.ball_device module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.devices.ball_device module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.devices package" href="mpf.devices.html" />
     <link rel="next" title="mpf.devices.ball_lock module" href="mpf.devices.ball_lock.html" />
     <link rel="prev" title="mpf.devices.autofire module" href="mpf.devices.autofire.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.devices.autofire.html" title="mpf.devices.autofire module"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" accesskey="U">mpf.devices package</a> &raquo;</li> 
       </ul>
@@ -66,6 +66,28 @@
 <p>A ball device is anything that can hold one or more balls, such as a
 trough, an eject hole, a VUK, a catapult, etc.</p>
 <p>Args: Same as Device.</p>
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.add_incoming_ball">
+<tt class="descname">add_incoming_ball</tt><big>(</big><em>source</em><big>)</big></dt>
+<dd><p>Notifies this device that there is a ball heading its way.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>source</strong> &#8211; The source device this ball is coming from</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.devices.ball_device.BallDevice.available_balls">
+<tt class="descname">available_balls</tt><em class="property"> = None</em></dt>
+<dd><p>Number of balls that are available to be ejected. This differes from
+<cite>balls</cite> since it&#8217;s possible that this device could have balls that are
+being used for some other eject, and thus not available.</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="mpf.devices.ball_device.BallDevice.balls">
 <tt class="descname">balls</tt><em class="property"> = None</em></dt>
@@ -88,64 +110,13 @@ trough, an eject hole, a VUK, a catapult, etc.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.devices.ball_device.BallDevice.configure_eject_targets">
-<tt class="descname">configure_eject_targets</tt><big>(</big><em>config=None</em><big>)</big></dt>
+<dt id="mpf.devices.ball_device.BallDevice.eject">
+<tt class="descname">eject</tt><big>(</big><em>balls=1</em>, <em>target=None</em>, <em>**kwargs</em><big>)</big></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="mpf.devices.ball_device.BallDevice.count_balls">
-<tt class="descname">count_balls</tt><big>(</big><em>stealth=False</em>, <em>**kwargs</em><big>)</big></dt>
-<dd><p>Counts the balls in the device and processes any new balls that came
-in or balls that have gone out.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>stealth</strong> &#8211; Boolean value that controls whether any events will be
-posted based on any ball count change info. If True, results
-will not be posted. If False, they will. Default is False.</li>
-<li><strong>**kwargs</strong> &#8211; Catches unexpected args since this method is used as an
-event handler.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="mpf.devices.ball_device.BallDevice.eject">
-<tt class="descname">eject</tt><big>(</big><em>balls=1</em>, <em>target=None</em>, <em>timeout=None</em>, <em>get_ball=False</em>, <em>**kwargs</em><big>)</big></dt>
-<dd><p>Ejects one or more balls from the device.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>balls</strong> &#8211; Integer of the number of balls to eject. Default is 1.</li>
-<li><strong>target</strong> &#8211; Optional target that should receive the ejected ball(s),
-either a string name of the ball device or a ball device
-object. Default is None which means this device will eject this
-ball to the first entry in the eject_targets list.</li>
-<li><strong>timeout</strong> &#8211; How long (in ms) to wait for the ball to make it into the
-target device after the ball is ejected. A value of <tt class="docutils literal"><span class="pre">None</span></tt>
-means the default timeout from the config file will be used. A
-value of 0 means there is no timeout.</li>
-<li><strong>get_ball</strong> &#8211; Boolean as to whether this device should attempt to get
-a ball to eject if it doesn&#8217;t have one. Default is False.</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-<p>Note that if this device&#8217;s &#8216;balls_per_eject&#8217; configuration is more than
-1, then it will eject the nearest number of balls it can.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.eject_all">
-<tt class="descname">eject_all</tt><big>(</big><em>target=None</em><big>)</big></dt>
+<tt class="descname">eject_all</tt><big>(</big><em>target=None</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Ejects all the balls from this device</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -162,7 +133,7 @@ None means <cite>playfield</cite>.</td>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.eject_failed">
-<tt class="descname">eject_failed</tt><big>(</big><em>retry=True</em>, <em>force_retry=False</em><big>)</big></dt>
+<tt class="descname">eject_failed</tt><big>(</big><em>retry=True</em><big>)</big></dt>
 <dd><p>Marks the current eject in progress as &#8216;failed.&#8217;</p>
 <p>Note this is not typically a method that would be called manually. It&#8217;s
 called automatically based on ejects timing out or balls falling back
@@ -173,14 +144,9 @@ the eject failed that the system can&#8217;t figure out on it&#8217;s own.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>retry</strong> &#8211; Boolean as to whether this eject should be retried. If True,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>retry</strong> &#8211; Boolean as to whether this eject should be retried. If True,
 the ball device will retry the eject again as long as the
-&#8216;max_eject_attempts&#8217; has not been exceeded. Default is True.</li>
-<li><strong>force_retry</strong> &#8211; Boolean that forces a retry even if the
-&#8216;max_eject_attempts&#8217; has been exceeded. Default is False.</li>
-</ul>
-</td>
+&#8216;max_eject_attempts&#8217; has not been exceeded. Default is True.</td>
 </tr>
 </tbody>
 </table>
@@ -189,24 +155,34 @@ the ball device will retry the eject again as long as the
 <dl class="attribute">
 <dt id="mpf.devices.ball_device.BallDevice.eject_in_progress_target">
 <tt class="descname">eject_in_progress_target</tt><em class="property"> = None</em></dt>
-<dd><p>The ball device this device is currently trying to eject to.</p>
+<dd><p>The device this device is currently trying to eject to.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="mpf.devices.ball_device.BallDevice.eject_queue">
 <tt class="descname">eject_queue</tt><em class="property"> = None</em></dt>
-<dd><p>Queue of the list of eject targets (ball devices) for the balls this
-device is trying to eject.</p>
+<dd><p>Queue of three-item tuples that represent ejects this device needs
+to do.</p>
+<p>Tuple structure:
+[0] = the eject target device
+[1] = boolean as to whether this is a mechanical eject
+[2] = trigger event which will trigger the actual eject attempts</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.flag_confirm_eject_via_count">
-<tt class="descname">flag_confirm_eject_via_count</tt><em class="property"> = None</em></dt>
-<dd><p>Notifies the count_balls() method that it should confirm an eject if
-it finds a ball missing. We need this to be a standalone variable
-since sometimes other eject methods will have to &#8220;fall back&#8221; on count
--based confirmations.</p>
-</dd></dl>
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.eject_success">
+<tt class="descname">eject_success</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.find_one_available_ball">
+<tt class="descname">find_one_available_ball</tt><big>(</big><em>path=deque([])</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.find_path_to_target">
+<tt class="descname">find_path_to_target</tt><big>(</big><em>target</em>, <em>eject_to_pf</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.get_additional_ball_capacity">
@@ -216,6 +192,11 @@ receive. A return value of 0 means that this device is full and/or
 that it&#8217;s not able to receive any balls at this time due to a
 current eject_in_progress.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.get_real_additional_capacity">
+<tt class="descname">get_real_additional_capacity</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.get_status">
@@ -254,61 +235,45 @@ Options include:
 <dt id="mpf.devices.ball_device.BallDevice.is_full">
 <tt class="descname">is_full</tt><big>(</big><big>)</big></dt>
 <dd><p>Checks to see if this device is full, meaning it is holding either
-the max number of balls it can hold, or it&#8217;s holding all the known balls
-in the machine.</p>
+the max number of balls it can hold, or it&#8217;s holding all the known
+balls in the machine.</p>
 <p>Returns: True or False</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.is_playfield">
 <tt class="descname">is_playfield</tt><big>(</big><big>)</big></dt>
-<dd><p>Returns True if this ball device is a Playfield-type device, False if
-it&#8217;s a regular ball device.</p>
+<dd><p>Returns True if this ball device is a Playfield-type device, False
+if it&#8217;s a regular ball device.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.num_balls_ejectable">
-<tt class="descname">num_balls_ejectable</tt></dt>
-<dd><p>How many balls are in this device that could be ejected.</p>
-</dd></dl>
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.is_ready_to_receive">
+<tt class="descname">is_ready_to_receive</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.num_balls_ejecting">
-<tt class="descname">num_balls_ejecting</tt><em class="property"> = None</em></dt>
-<dd><p>The number of balls that are currently in the process of being
-ejected. This is either 0, 1, or whatever the balls was
-for devices that eject all their balls at once.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.num_balls_in_transit">
-<tt class="descname">num_balls_in_transit</tt><em class="property"> = None</em></dt>
-<dd><p>The number of balls in transit to this device.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.num_balls_requested">
-<tt class="descname">num_balls_requested</tt><em class="property"> = None</em></dt>
-<dd><p>The number of balls this device is in the process of trying to get.</p>
+<dt id="mpf.devices.ball_device.BallDevice.mechanical_eject_in_progress">
+<tt class="descname">mechanical_eject_in_progress</tt><em class="property"> = None</em></dt>
+<dd><p>How many balls are waiting for a mechanical (e.g. non coil fired /
+spring plunger) eject.</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="mpf.devices.ball_device.BallDevice.num_eject_attempts">
 <tt class="descname">num_eject_attempts</tt><em class="property"> = None</em></dt>
-<dd><p>Counter of how many attempts to eject the current ball this device
-has tried. Eventually it will give up.</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="mpf.devices.ball_device.BallDevice.num_jam_switch_count">
-<tt class="descname">num_jam_switch_count</tt><em class="property"> = None</em></dt>
-<dd><p>How many times the jam switch has been activated since the last
-successful eject.</p>
+<dd><p>Counter of how many attempts to eject the this device has tried.
+Eventually it will give up.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.remove_incoming_ball">
+<tt class="descname">remove_incoming_ball</tt><big>(</big><em>source</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.request_ball">
-<tt class="descname">request_ball</tt><big>(</big><em>balls=1</em><big>)</big></dt>
+<tt class="descname">request_ball</tt><big>(</big><em>balls=1</em>, <em>**kwargs</em><big>)</big></dt>
 <dd><p>Request that one or more balls is added to this device.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -320,23 +285,31 @@ itself.</td>
 </tr>
 </tbody>
 </table>
-<p>Note that a device will never request more balls than it can hold. Also,
-only devices that are fed by other ball devices (or a combination of
-ball devices and diverters) can make this request. e.g. if this device
-is fed from the playfield, then this request won&#8217;t work.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.setup_eject_chain">
+<tt class="descname">setup_eject_chain</tt><big>(</big><em>path</em>, <em>player_controlled=False</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mpf.devices.ball_device.BallDevice.setup_player_controlled_eject">
+<tt class="descname">setup_player_controlled_eject</tt><big>(</big><em>balls=1</em>, <em>target=None</em><big>)</big></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.status_dump">
 <tt class="descname">status_dump</tt><big>(</big><big>)</big></dt>
-<dd><p>Dumps the full current status of the device to the log.</p>
+<dd><p>Dumps the full current status of the ball device to the log.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="mpf.devices.ball_device.BallDevice.stop">
 <tt class="descname">stop</tt><big>(</big><em>**kwargs</em><big>)</big></dt>
 <dd><p>Stops all activity in this device.</p>
-<p>Cancels all pending eject requests. Cancels eject confirmation checks.</p>
+<p>Cancels all pending eject requests. Cancels eject confirmation checks.
+You have to call stop on all connected devices to really reset
+everything</p>
 </dd></dl>
 
 </dd></dl>
@@ -392,7 +365,7 @@ is fed from the playfield, then this request won&#8217;t work.</p>
         <li class="right" >
           <a href="mpf.devices.autofire.html" title="mpf.devices.autofire module"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.devices.html" >mpf.devices package</a> &raquo;</li> 
       </ul>

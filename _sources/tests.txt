@@ -1,0 +1,48 @@
+tests package
+=============
+
+Submodules
+----------
+
+.. toctree::
+
+   tests.MpfTestCase
+   tests.test_BallDevice
+   tests.test_BallDeviceAutoManualPlunger
+   tests.test_BallDeviceEventConfirmation
+   tests.test_BallDeviceHoldCoil
+   tests.test_BallDeviceJamSwitch
+   tests.test_BallDeviceManualWithCount
+   tests.test_BallDeviceManualWithTarget
+   tests.test_BallDeviceNoPlungerSwitch
+   tests.test_BallDeviceRouting
+   tests.test_BallDeviceSwitchConfirmation
+   tests.test_BallDeviceTriggerEvents
+   tests.test_BallLock
+   tests.test_EventManager
+   tests.test_Playfield
+   tests.test_SmartVirtualPlatform
+   tests.test_System11Trough
+   tests.test_TooLongExitCountDelay
+   tests.test_TutorialStep10
+   tests.test_TutorialStep11
+   tests.test_TutorialStep12
+   tests.test_TutorialStep13
+   tests.test_TutorialStep14
+   tests.test_TutorialStep15
+   tests.test_TutorialStep16
+   tests.test_TutorialStep17
+   tests.test_TutorialStep4
+   tests.test_TutorialStep5
+   tests.test_TutorialStep6
+   tests.test_TutorialStep7
+   tests.test_TutorialStep8
+   tests.test_TutorialStep9
+
+Module contents
+---------------
+
+.. automodule:: tests
+    :members:
+    :undoc-members:
+    :show-inheritance:

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>mpf.system.assets module &mdash; Mission Pinball Framework v0.20.1 API Documentation</title>
+    <title>mpf.system.assets module &mdash; Mission Pinball Framework v0.21.0 API Documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.20.1',
+        VERSION:     '0.21.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mission Pinball Framework v0.20.1 API Documentation" href="index.html" />
+    <link rel="top" title="Mission Pinball Framework v0.21.0 API Documentation" href="index.html" />
     <link rel="up" title="mpf.system package" href="mpf.system.html" />
     <link rel="next" title="mpf.system.ball_controller module" href="mpf.system.ball_controller.html" />
     <link rel="prev" title="mpf.system package" href="mpf.system.html" /> 
@@ -44,7 +44,7 @@
         <li class="right" >
           <a href="mpf.system.html" title="mpf.system package"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" accesskey="U">mpf.system package</a> &raquo;</li> 
       </ul>
@@ -72,6 +72,15 @@
 <tt class="descname">load</tt><big>(</big><em>callback=None</em><big>)</big></dt>
 <dd></dd></dl>
 
+<dl class="attribute">
+<dt id="mpf.system.assets.Asset.load_priority">
+<tt class="descname">load_priority</tt><em class="property"> = 100</em></dt>
+<dd><p>Specifies the priority order that assets will be loaded in. (Higher
+numbers load first.) This is useful because some assets are built on
+others, so we need a way to ensure that certain asset classes are loaded
+first. (e.g. images, sounds, and videos need to be loaded before shows.).</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="mpf.system.assets.Asset.unload">
 <tt class="descname">unload</tt><big>(</big><big>)</big></dt>
@@ -81,7 +90,7 @@
 
 <dl class="class">
 <dt id="mpf.system.assets.AssetLoader">
-<em class="property">class </em><tt class="descclassname">mpf.system.assets.</tt><tt class="descname">AssetLoader</tt><big>(</big><em>name</em>, <em>queue</em>, <em>machine</em><big>)</big></dt>
+<em class="property">class </em><tt class="descclassname">mpf.system.assets.</tt><tt class="descname">AssetLoader</tt><big>(</big><em>queue</em><big>)</big></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></tt></p>
 <p>Base class for the Asset Loader with runs as a separate thread and
 actually loads the assets from disk.</p>
@@ -138,21 +147,7 @@ for this asset will use. e.g. <tt class="docutils literal"><span class="pre">('p
 </table>
 <p>There will be one Asset Manager for each different type of asset. (e.g. one
 for images, one for movies, one for sounds, etc.)</p>
-<dl class="method">
-<dt id="mpf.system.assets.AssetManager.create_loader_thread">
-<tt class="descname">create_loader_thread</tt><big>(</big><big>)</big></dt>
-<dd><p>Creates a loader thread which will handle the actual reading from
-disk and loading into memory for assets of this class. Note that one
-loader thread is created for each class of assets used in your game.</p>
-<p>Note that this asset loader as a separate <em>thread</em>, not a separate
-<em>process</em>. It will run on the same core as your main MPF Python
-instance.</p>
-<p>Note that it&#8217;s possible to call this method multiple times to create
-multiple loader threads, but that will not make things load any faster
-since this process is limited by CPU and disk I/O. In fact if it&#8217;s a
-magnetic disk, think multiple threads would make it slower.</p>
-</dd></dl>
-
+<p>All asset managers share a single loader thread.</p>
 <dl class="method">
 <dt id="mpf.system.assets.AssetManager.load_asset">
 <tt class="descname">load_asset</tt><big>(</big><em>asset</em>, <em>callback</em>, <em>priority=10</em><big>)</big></dt>
@@ -200,6 +195,16 @@ event handler.</li>
 </table>
 <p>The assets must already be registered in order for this method to work.</p>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.assets.AssetManager.loader_queue">
+<tt class="descname">loader_queue</tt><em class="property"> = &lt;Queue.PriorityQueue instance at 0x105762368&gt;</em></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mpf.system.assets.AssetManager.loader_thread">
+<tt class="descname">loader_thread</tt><em class="property"> = &lt;AssetLoader(Thread-1, started daemon 123145306509312)&gt;</em></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="mpf.system.assets.AssetManager.locate_asset_file">
@@ -319,6 +324,11 @@ memory.</p>
 files.</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="mpf.system.assets.AssetManager.total_assets">
+<tt class="descname">total_assets</tt><em class="property"> = 0</em></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="mpf.system.assets.AssetManager.unload_assets">
 <tt class="descname">unload_assets</tt><big>(</big><em>asset_set</em><big>)</big></dt>
@@ -389,7 +399,7 @@ used, but it&#8217;s just unloaded from memory to save on memory.</p>
         <li class="right" >
           <a href="mpf.system.html" title="mpf.system package"
              >previous</a> |</li>
-        <li><a href="index.html">Mission Pinball Framework v0.20.1 API Documentation</a> &raquo;</li>
+        <li><a href="index.html">Mission Pinball Framework v0.21.0 API Documentation</a> &raquo;</li>
           <li><a href="mpf.html" >mpf package</a> &raquo;</li>
           <li><a href="mpf.system.html" >mpf.system package</a> &raquo;</li> 
       </ul>

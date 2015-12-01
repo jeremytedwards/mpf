@@ -7,6 +7,8 @@ Submodules
 .. toctree::
 
    mpf.media_controller.elements.animation
+   mpf.media_controller.elements.character_picker
+   mpf.media_controller.elements.entered_chars
    mpf.media_controller.elements.image
    mpf.media_controller.elements.movie
    mpf.media_controller.elements.shape
