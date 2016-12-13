@@ -10,7 +10,6 @@ class Accelerometer(Device):
     """Implements an accelerometer
 
     Args: Same as the Device parent class
-
     """
 
     config_section = 'accelerometers'
