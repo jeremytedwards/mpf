@@ -3,7 +3,7 @@
 from mpf.system.device import Device
 
 
-class Segment(Device):
+class Display(Device):
     """Implements a segment display in a pinball machine.
 
     Args: Same as the Device parent class.
