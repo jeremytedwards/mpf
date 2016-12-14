@@ -24,10 +24,14 @@ class Segment(Device):
         #                                     self._position_event,
         #                                     position=position)
 
+    """
+    CoolTerm
+    Connect to A - Display
+    PA:<position>,<digit in hex>,<position>,<digit in hex>,<position>,<digit in hex>,...
+    """
     def update_score(self, player=0, score=0):
-        # for pos in self.display_size:
-        #     self.display[pos] = score[pos]
-        # set value of each digit in score to position on the display
+        # for digit, pos in enumerate(score):
+        #     self.display[pos] = hex(digit)[2:]
 
     def reset(self, **kwargs):
         #  for each display registered set value to **kwargs else 0
