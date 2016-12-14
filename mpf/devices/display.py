@@ -1,7 +1,5 @@
 """ Implements a display in MPF """
 
-from collections import deque
-
 from mpf.system.device import Device
 
 
@@ -16,13 +14,18 @@ class Segment(Device):
     class_label = 'display'
 
     def __init__(self, machine, name, config, collection=None, validate=True):
+        self.log = logging.getLogger('Display.' + name)
         super().__init__(machine, name, config, collection,
                          validate=validate, platform_section='displays')
+        # self.machine - a reference to the main machine controller object
+        # self.name - a string of the name of this device ('device1', 'device2', etc.)
+        # self.tags - any tags that were specified in the machine config files
+        # self.label - a plain english description from the machine config files
 
-        # for digit in self.config['digits']:
-        #     self.machine.events.add_handler(self.config['positions'][position],
-        #                                     self._position_event,
-        #                                     position=position)
+        for digit in self.config['digits']:
+            self.machine.events.add_handler(self.config['positions'][position],
+                                            self._position_event,
+                                            position=position)
 
     """
     CoolTerm
